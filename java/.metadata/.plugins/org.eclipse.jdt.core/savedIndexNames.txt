@@ -1,0 +1,2 @@
+INDEX VERSION 1.126+F:\git_up\durian_cake\java\.metadata\.plugins\org.eclipse.jdt.core
+4145240914.index
