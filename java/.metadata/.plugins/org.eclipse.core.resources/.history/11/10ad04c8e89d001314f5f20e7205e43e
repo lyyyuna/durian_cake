@@ -1,0 +1,13 @@
+
+public class ForecastDisplay implements Observer, DisplayElement {
+	
+	private float currentPreassure = 29.3;
+	private float lastPreassure;
+	private WeatherData weartherData;
+	
+	public ForecastDisplay(WeatherData weatherData) {
+		this.weartherData = weatherData;
+		weatherData.registerObserver(this);
+	}
+
+}
