@@ -12,4 +12,14 @@
 <fullyQualifiedTypeName name="Quack"/>
 <fullyQualifiedTypeName name="ModelDuck"/>
 <fullyQualifiedTypeName name="FlyRocketPowered"/>
+<fullyQualifiedTypeName name="Subject"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="Observer"/>
+<fullyQualifiedTypeName name="DisplayElement"/>
+<fullyQualifiedTypeName name="ForecastDisplay"/>
+<fullyQualifiedTypeName name="java.util.Observer"/>
+<fullyQualifiedTypeName name="java.util.Observable"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="WeatherData"/>
+<fullyQualifiedTypeName name="CurrentConditionsDisplay"/>
 </qualifiedTypeNameHistroy>

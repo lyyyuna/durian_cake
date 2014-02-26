@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="15" version="2.0">
+<workbench progressCount="19" version="2.0">
 <workbenchAdvisor/>
 <window height="728" maximized="true" width="1024" x="114" y="-15">
 <fastViewData fastViewLocation="1024"/>
@@ -37,28 +37,28 @@
 </folder>
 </info>
 </editorArea>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Duck.java" partName="Duck.java" path="F:/git_up/durian_cake/java/design_pattern/src/Duck.java" title="Duck.java" tooltip="design_pattern/src/Duck.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/design_pattern/src/Duck.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="91" selectionTopPixel="89"/>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DisplayElement.java" partName="DisplayElement.java" path="F:/git_up/durian_cake/java/observer1/src/DisplayElement.java" title="DisplayElement.java" tooltip="observer1/src/DisplayElement.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/observer1/src/DisplayElement.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="65" selectionTopPixel="0"/>
 </editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DecoyDuck.java" partName="DecoyDuck.java" path="F:/git_up/durian_cake/java/design_pattern/src/DecoyDuck.java" title="DecoyDuck.java" tooltip="design_pattern/src/DecoyDuck.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/design_pattern/src/DecoyDuck.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="221" selectionTopPixel="0"/>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="WeatherData.java" partName="WeatherData.java" path="F:/git_up/durian_cake/java/observer1/src/WeatherData.java" title="WeatherData.java" tooltip="observer1/src/WeatherData.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/observer1/src/WeatherData.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="302" selectionTopPixel="133"/>
 </editor>
-<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MainClass.java" partName="MainClass.java" path="F:/git_up/durian_cake/java/design_pattern/src/MainClass.java" title="MainClass.java" tooltip="design_pattern/src/MainClass.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/design_pattern/src/MainClass.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="378" selectionTopPixel="60"/>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="CurrentConditionsDisplay.java" partName="CurrentConditionsDisplay.java" path="F:/git_up/durian_cake/java/observer1/src/CurrentConditionsDisplay.java" title="CurrentConditionsDisplay.java" tooltip="observer1/src/CurrentConditionsDisplay.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/observer1/src/CurrentConditionsDisplay.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="311" selectionTopPixel="0"/>
 </editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ModelDuck.java" partName="ModelDuck.java" path="F:/git_up/durian_cake/java/design_pattern/src/ModelDuck.java" title="ModelDuck.java" tooltip="design_pattern/src/ModelDuck.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/design_pattern/src/ModelDuck.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="204" selectionTopPixel="0"/>
+<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="TestMain.java" partName="TestMain.java" path="F:/git_up/durian_cake/java/observer1/src/TestMain.java" title="TestMain.java" tooltip="observer1/src/TestMain.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/observer1/src/TestMain.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="287" selectionTopPixel="0"/>
 </editor>
 </editors>
 <views>
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
 <expanded>
-<category IMemento.internal.id="Errors (1 item)"/>
+<category IMemento.internal.id="Errors (3 items)"/>
 </expanded>
 <columnWidths org.eclipse.ui.ide.locationField="90" org.eclipse.ui.ide.markerType="90" org.eclipse.ui.ide.pathField="120" org.eclipse.ui.ide.resourceField="90" org.eclipse.ui.ide.severityAndDescriptionField="300"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
@@ -189,7 +189,7 @@
 </folder>
 </info>
 <info part="org.eclipse.ui.editorss" ratio="0.25" ratioLeft="250" ratioRight="750" relationship="2" relative="left"/>
-<info folder="true" part="bottom" ratio="0.5541195" ratioLeft="343" ratioRight="276" relationship="4" relative="org.eclipse.ui.editorss">
+<info folder="true" part="bottom" ratio="0.64458805" ratioLeft="399" ratioRight="220" relationship="4" relative="org.eclipse.ui.editorss">
 <folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
 <page content="org.eclipse.jdt.ui.JavadocView" label="Javadoc"/>
@@ -223,168 +223,166 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/design_pattern/src/Duck.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/design_pattern/src/FlyWithWings.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/design_pattern/src/FlyRocketPowered.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/design_pattern/src/Quack.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/design_pattern/src/Squeak.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/design_pattern/src/MuteQuack.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/design_pattern/src/MallardDuck.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/design_pattern/src/RedHeadDuck.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/design_pattern/src/RubberDuck.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/design_pattern/src/DecoyDuck.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/design_pattern/src/MainClass.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/design_pattern/src/ModelDuck.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/oberser/src/WeatherData.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/oberser/src/CurrentConditionsDisplay.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/oberser/src/ForecastDisplay.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/oberser/src/TestMain.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/oberser/src/Observer.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/observer1/src/DisplayElement.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/oberser/src/DisplayElement.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/observer1/src/WeatherData.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/observer1/src/CurrentConditionsDisplay.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/observer1/src/TestMain.java"/>
 </editors>
-<item historyLabel="FlyWithWings.java" index="1">
-<position info="not_deleted" x="0" y="0"/>
+<item historyLabel="CurrentConditionsDisplay.java" index="1">
+<position info="not_deleted" x="299" y="0"/>
 </item>
-<item historyLabel="FlyWithWings.java" index="1">
-<position info="not_deleted" x="70" y="0"/>
+<item historyLabel="ForecastDisplay.java" index="2">
+<position info="not_deleted" x="113" y="0"/>
 </item>
-<item historyLabel="FlyWithWings.java" index="1">
-<position info="not_deleted" x="110" y="0"/>
+<item historyLabel="TestMain.java" index="3">
+<position info="not_deleted" x="21" y="0"/>
 </item>
-<item historyLabel="FlyWithWings.java" index="1">
-<position info="not_deleted" x="109" y="0"/>
+<item historyLabel="TestMain.java" index="3">
+<position info="not_deleted" x="89" y="0"/>
 </item>
-<item historyLabel="Duck.java" index="0">
-<position info="not_deleted" x="91" y="0"/>
+<item historyLabel="TestMain.java" index="3">
+<position info="not_deleted" x="83" y="0"/>
 </item>
-<item historyLabel="FlyRocketPowered.java" index="2">
-<position info="not_deleted" x="0" y="0"/>
+<item historyLabel="TestMain.java" index="3">
+<position info="not_deleted" x="230" y="0"/>
 </item>
-<item historyLabel="FlyRocketPowered.java" index="2">
-<position info="not_deleted" x="133" y="0"/>
+<item historyLabel="TestMain.java" index="3">
+<position info="not_deleted" x="301" y="0"/>
 </item>
-<item historyLabel="Quack.java" index="3">
-<position info="not_deleted" x="0" y="0"/>
+<item historyLabel="TestMain.java" index="3">
+<position info="not_deleted" x="341" y="0"/>
 </item>
-<item historyLabel="Quack.java" index="3">
-<position info="not_deleted" x="68" y="0"/>
+<item historyLabel="TestMain.java" index="3">
+<position info="not_deleted" x="345" y="0"/>
 </item>
-<item historyLabel="Quack.java" index="3">
-<position info="not_deleted" x="103" y="0"/>
+<item historyLabel="TestMain.java" index="3">
+<position info="not_deleted" x="352" y="0"/>
 </item>
-<item historyLabel="Squeak.java" index="4">
-<position info="not_deleted" x="0" y="0"/>
+<item historyLabel="TestMain.java" index="3">
+<position info="not_deleted" x="388" y="0"/>
 </item>
-<item historyLabel="Squeak.java" index="4">
-<position info="not_deleted" x="69" y="0"/>
+<item historyLabel="TestMain.java" index="3">
+<position info="not_deleted" x="392" y="0"/>
 </item>
-<item historyLabel="Squeak.java" index="4">
-<position info="not_deleted" x="102" y="0"/>
+<item historyLabel="TestMain.java" index="3">
+<position info="not_deleted" x="401" y="0"/>
 </item>
-<item historyLabel="Quack.java" index="3">
-<position info="not_deleted" x="103" y="0"/>
+<item historyLabel="WeatherData.java" index="0">
+<position info="not_deleted" x="615" y="0"/>
 </item>
-<item historyLabel="Squeak.java" index="4">
-<position info="not_deleted" x="112" y="0"/>
+<item historyLabel="ForecastDisplay.java" index="2">
+<position info="not_deleted" x="314" y="0"/>
 </item>
-<item historyLabel="MuteQuack.java" index="5">
-<position info="not_deleted" x="0" y="0"/>
+<item historyLabel="CurrentConditionsDisplay.java" index="1">
+<position info="not_deleted" x="299" y="0"/>
 </item>
-<item historyLabel="MuteQuack.java" index="5">
-<position info="not_deleted" x="72" y="0"/>
+<item historyLabel="TestMain.java" index="3">
+<position info="not_deleted" x="401" y="0"/>
 </item>
-<item historyLabel="MuteQuack.java" index="5">
-<position info="not_deleted" x="119" y="0"/>
+<item historyLabel="ForecastDisplay.java" index="2">
+<position info="not_deleted" x="314" y="0"/>
 </item>
-<item historyLabel="MallardDuck.java" index="6">
-<position info="not_deleted" x="0" y="0"/>
+<item historyLabel="TestMain.java" index="3">
+<position info="not_deleted" x="401" y="0"/>
 </item>
-<item historyLabel="MallardDuck.java" index="6">
+<item historyLabel="ForecastDisplay.java" index="2">
+<position info="not_deleted" x="345" y="0"/>
+</item>
+<item historyLabel="Observer.java" index="4">
+<position info="not_deleted" x="101" y="0"/>
+</item>
+<item historyLabel="DisplayElement.java" index="5">
 <position info="not_deleted" x="65" y="0"/>
 </item>
-<item historyLabel="MallardDuck.java" index="6">
-<position info="not_deleted" x="98" y="0"/>
+<item historyLabel="DisplayElement.java" index="6">
+<position info="not_deleted" x="0" y="65"/>
 </item>
-<item historyLabel="MallardDuck.java" index="6">
-<position info="not_deleted" x="167" y="0"/>
+<item historyLabel="DisplayElement.java" index="5">
+<position info="not_deleted" x="65" y="0"/>
 </item>
-<item historyLabel="MallardDuck.java" index="6">
-<position info="not_deleted" x="231" y="0"/>
+<item historyLabel="WeatherData.java" index="7">
+<position info="not_deleted" x="58" y="0"/>
 </item>
-<item historyLabel="Duck.java" index="0">
-<position info="not_deleted" x="91" y="0"/>
+<item historyLabel="WeatherData.java" index="7">
+<position info="not_deleted" x="497" y="0"/>
 </item>
-<item historyLabel="MallardDuck.java" index="6">
-<position info="not_deleted" x="231" y="0"/>
+<item historyLabel="CurrentConditionsDisplay.java" index="8">
+<position info="not_deleted" x="60" y="0"/>
 </item>
-<item historyLabel="RedHeadDuck.java" index="7">
+<item historyLabel="CurrentConditionsDisplay.java" index="8">
+<position info="not_deleted" x="311" y="0"/>
+</item>
+<item historyLabel="CurrentConditionsDisplay.java" index="8">
+<position info="not_deleted" x="403" y="0"/>
+</item>
+<item historyLabel="CurrentConditionsDisplay.java" index="8">
+<position info="not_deleted" x="553" y="0"/>
+</item>
+<item historyLabel="CurrentConditionsDisplay.java" index="8">
+<position info="not_deleted" x="589" y="0"/>
+</item>
+<item historyLabel="CurrentConditionsDisplay.java" index="8">
+<position info="not_deleted" x="702" y="0"/>
+</item>
+<item historyLabel="WeatherData.java" index="7">
+<position info="not_deleted" x="497" y="0"/>
+</item>
+<item historyLabel="CurrentConditionsDisplay.java" index="8">
+<position info="not_deleted" x="363" y="3"/>
+</item>
+<item historyLabel="WeatherData.java" index="7">
+<position info="not_deleted" x="608" y="0"/>
+</item>
+<item historyLabel="CurrentConditionsDisplay.java" index="8">
+<position info="not_deleted" x="363" y="3"/>
+</item>
+<item historyLabel="WeatherData.java" index="7">
+<position info="not_deleted" x="608" y="0"/>
+</item>
+<item historyLabel="CurrentConditionsDisplay.java" index="8">
+<position info="not_deleted" x="363" y="3"/>
+</item>
+<item historyLabel="WeatherData.java" index="7">
+<position info="not_deleted" x="608" y="0"/>
+</item>
+<item historyLabel="CurrentConditionsDisplay.java" index="8">
+<position info="not_deleted" x="363" y="3"/>
+</item>
+<item historyLabel="WeatherData.java" index="7">
+<position info="not_deleted" x="608" y="0"/>
+</item>
+<item historyLabel="DisplayElement.java" index="5">
+<position info="not_deleted" x="65" y="0"/>
+</item>
+<item historyLabel="WeatherData.java" index="7">
+<position info="not_deleted" x="608" y="0"/>
+</item>
+<item historyLabel="CurrentConditionsDisplay.java" index="8">
+<position info="not_deleted" x="311" y="0"/>
+</item>
+<item historyLabel="TestMain.java" index="9">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="RedHeadDuck.java" index="7">
-<position info="not_deleted" x="66" y="0"/>
+<item historyLabel="TestMain.java" index="9">
+<position info="not_deleted" x="67" y="0"/>
 </item>
-<item historyLabel="RedHeadDuck.java" index="7">
-<position info="not_deleted" x="104" y="0"/>
+<item historyLabel="TestMain.java" index="9">
+<position info="not_deleted" x="61" y="0"/>
 </item>
-<item historyLabel="RedHeadDuck.java" index="7">
-<position info="not_deleted" x="136" y="0"/>
+<item historyLabel="TestMain.java" index="9">
+<position info="not_deleted" x="353" y="0"/>
 </item>
-<item historyLabel="RedHeadDuck.java" index="7">
-<position info="not_deleted" x="168" y="0"/>
+<item historyLabel="WeatherData.java" index="7">
+<position info="not_deleted" x="302" y="0"/>
 </item>
-<item historyLabel="RedHeadDuck.java" index="7">
-<position info="not_deleted" x="234" y="0"/>
-</item>
-<item historyLabel="RubberDuck.java" index="8">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="RubberDuck.java" index="8">
-<position info="not_deleted" x="63" y="0"/>
-</item>
-<item historyLabel="RubberDuck.java" index="8">
-<position info="not_deleted" x="162" y="0"/>
-</item>
-<item historyLabel="RubberDuck.java" index="8">
-<position info="not_deleted" x="99" y="0"/>
-</item>
-<item historyLabel="Duck.java" index="0">
-<position info="not_deleted" x="91" y="0"/>
-</item>
-<item historyLabel="DecoyDuck.java" index="9">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="DecoyDuck.java" index="9">
-<position info="not_deleted" x="62" y="0"/>
-</item>
-<item historyLabel="DecoyDuck.java" index="9">
-<position info="not_deleted" x="138" y="0"/>
-</item>
-<item historyLabel="DecoyDuck.java" index="9">
-<position info="not_deleted" x="168" y="0"/>
-</item>
-<item historyLabel="DecoyDuck.java" index="9">
-<position info="not_deleted" x="221" y="0"/>
-</item>
-<item historyLabel="MainClass.java" index="10">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="MainClass.java" index="10">
-<position info="not_deleted" x="68" y="0"/>
-</item>
-<item historyLabel="MainClass.java" index="10">
-<position info="not_deleted" x="436" y="0"/>
-</item>
-<item historyLabel="ModelDuck.java" index="11">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="ModelDuck.java" index="11">
-<position info="not_deleted" x="62" y="0"/>
-</item>
-<item historyLabel="ModelDuck.java" index="11">
-<position info="not_deleted" x="96" y="0"/>
-</item>
-<item historyLabel="ModelDuck.java" index="11">
-<position info="not_deleted" x="160" y="0"/>
-</item>
-<item historyLabel="ModelDuck.java" index="11">
-<position info="not_deleted" x="204" y="0"/>
-</item>
-<item active="true" historyLabel="MainClass.java" index="10">
-<position info="not_deleted" x="436" y="0"/>
+<item active="true" historyLabel="TestMain.java" index="9">
+<position info="not_deleted" x="353" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -403,6 +401,39 @@
 </trimLayout>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="TestMain.java" tooltip="observer1/src/TestMain.java">
+<persistable path="/observer1/src/TestMain.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="CurrentConditionsDisplay.java" tooltip="observer1/src/CurrentConditionsDisplay.java">
+<persistable path="/observer1/src/CurrentConditionsDisplay.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="WeatherData.java" tooltip="observer1/src/WeatherData.java">
+<persistable path="/observer1/src/WeatherData.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DisplayElement.java" tooltip="oberser/src/DisplayElement.java">
+<persistable path="/oberser/src/DisplayElement.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DisplayElement.java" tooltip="observer1/src/DisplayElement.java">
+<persistable path="/observer1/src/DisplayElement.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="TestMain.java" tooltip="oberser/src/TestMain.java">
+<persistable path="/oberser/src/TestMain.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ForecastDisplay.java" tooltip="oberser/src/ForecastDisplay.java">
+<persistable path="/oberser/src/ForecastDisplay.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="CurrentConditionsDisplay.java" tooltip="oberser/src/CurrentConditionsDisplay.java">
+<persistable path="/oberser/src/CurrentConditionsDisplay.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="WeatherData.java" tooltip="oberser/src/WeatherData.java">
+<persistable path="/oberser/src/WeatherData.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Observer.java" tooltip="oberser/src/Observer.java">
+<persistable path="/oberser/src/Observer.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Subject.java" tooltip="oberser/src/Subject.java">
+<persistable path="/oberser/src/Subject.java"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ModelDuck.java" tooltip="design_pattern/src/ModelDuck.java">
 <persistable path="/design_pattern/src/ModelDuck.java"/>
 </file>
@@ -414,39 +445,6 @@
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="RubberDuck.java" tooltip="design_pattern/src/RubberDuck.java">
 <persistable path="/design_pattern/src/RubberDuck.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="RedHeadDuck.java" tooltip="design_pattern/src/RedHeadDuck.java">
-<persistable path="/design_pattern/src/RedHeadDuck.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MallardDuck.java" tooltip="design_pattern/src/MallardDuck.java">
-<persistable path="/design_pattern/src/MallardDuck.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MuteQuack.java" tooltip="design_pattern/src/MuteQuack.java">
-<persistable path="/design_pattern/src/MuteQuack.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Squeak.java" tooltip="design_pattern/src/Squeak.java">
-<persistable path="/design_pattern/src/Squeak.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Quack.java" tooltip="design_pattern/src/Quack.java">
-<persistable path="/design_pattern/src/Quack.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="FlyRocketPowered.java" tooltip="design_pattern/src/FlyRocketPowered.java">
-<persistable path="/design_pattern/src/FlyRocketPowered.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="FlyWithWings.java" tooltip="design_pattern/src/FlyWithWings.java">
-<persistable path="/design_pattern/src/FlyWithWings.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="FlyNoWay.java" tooltip="design_pattern/src/FlyNoWay.java">
-<persistable path="/design_pattern/src/FlyNoWay.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="QuackBehavior.java" tooltip="design_pattern/src/QuackBehavior.java">
-<persistable path="/design_pattern/src/QuackBehavior.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="FlyBehavior.java" tooltip="design_pattern/src/FlyBehavior.java">
-<persistable path="/design_pattern/src/FlyBehavior.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Duck.java" tooltip="design_pattern/src/Duck.java">
-<persistable path="/design_pattern/src/Duck.java"/>
 </file>
 </mruList>
 </workbench>
