@@ -13,7 +13,6 @@
 <fullyQualifiedTypeName name="ModelDuck"/>
 <fullyQualifiedTypeName name="FlyRocketPowered"/>
 <fullyQualifiedTypeName name="Subject"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="Observer"/>
 <fullyQualifiedTypeName name="DisplayElement"/>
 <fullyQualifiedTypeName name="ForecastDisplay"/>
@@ -22,4 +21,16 @@
 <fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="WeatherData"/>
 <fullyQualifiedTypeName name="CurrentConditionsDisplay"/>
+<fullyQualifiedTypeName name="HouseBlend"/>
+<fullyQualifiedTypeName name="CondimentDecorator"/>
+<fullyQualifiedTypeName name="Espresso"/>
+<fullyQualifiedTypeName name="Beverage"/>
+<fullyQualifiedTypeName name="DarkRoast"/>
+<fullyQualifiedTypeName name="Mocha"/>
+<fullyQualifiedTypeName name="Whip"/>
+<fullyQualifiedTypeName name="java.lang.reflect.Array"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="CheesePizza"/>
+<fullyQualifiedTypeName name="SimplePizzaFactory"/>
+<fullyQualifiedTypeName name="PizzaStore"/>
 </qualifiedTypeNameHistroy>
