@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workbench progressCount="19" version="2.0">
 <workbenchAdvisor/>
-<window height="728" maximized="true" width="1024" x="114" y="-15">
+<window height="728" maximized="true" width="1024" x="148" y="-8">
 <fastViewData fastViewLocation="1024"/>
 <perspectiveBar>
 <itemSize x="160"/>
@@ -41,25 +41,25 @@
 </folder>
 </info>
 </editorArea>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="TestMain.java" partName="TestMain.java" path="F:/git_up/durian_cake/java/factory/src/TestMain.java" title="TestMain.java" tooltip="factory/src/TestMain.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/factory/src/TestMain.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="186" selectionTopPixel="0"/>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Pizza.java" partName="Pizza.java" path="F:/git_up/durian_cake/java/factory2/src/Pizza.java" title="Pizza.java" tooltip="factory2/src/Pizza.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/factory2/src/Pizza.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1316" selectionTopPixel="407"/>
 </editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="CheesePizza.java" partName="CheesePizza.java" path="F:/git_up/durian_cake/java/factory/src/CheesePizza.java" title="CheesePizza.java" tooltip="factory/src/CheesePizza.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/factory/src/CheesePizza.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="170" selectionTopPixel="0"/>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="BlackOlives.java" partName="BlackOlives.java" path="F:/git_up/durian_cake/java/factory2/src/BlackOlives.java" title="BlackOlives.java" tooltip="factory2/src/BlackOlives.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/factory2/src/BlackOlives.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="103" selectionTopPixel="0"/>
 </editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Pizza.java" partName="Pizza.java" path="F:/git_up/durian_cake/java/factory/src/Pizza.java" title="Pizza.java" tooltip="factory/src/Pizza.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/factory/src/Pizza.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="129" selectionTopPixel="0"/>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="CheesePizza.java" partName="CheesePizza.java" path="F:/git_up/durian_cake/java/factory2/src/CheesePizza.java" title="CheesePizza.java" tooltip="factory2/src/CheesePizza.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/factory2/src/CheesePizza.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="392" selectionTopPixel="0"/>
 </editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="PizzaStore.java" partName="PizzaStore.java" path="F:/git_up/durian_cake/java/factory/src/PizzaStore.java" title="PizzaStore.java" tooltip="factory/src/PizzaStore.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/factory/src/PizzaStore.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="213" selectionTopPixel="0"/>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="PizzaIngredientFactory.java" partName="PizzaIngredientFactory.java" path="F:/git_up/durian_cake/java/factory2/src/PizzaIngredientFactory.java" title="PizzaIngredientFactory.java" tooltip="factory2/src/PizzaIngredientFactory.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/factory2/src/PizzaIngredientFactory.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="240" selectionTopPixel="0"/>
 </editor>
-<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="SimplePizzaFactory.java" partName="SimplePizzaFactory.java" path="F:/git_up/durian_cake/java/factory/src/SimplePizzaFactory.java" title="SimplePizzaFactory.java" tooltip="factory/src/SimplePizzaFactory.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/factory/src/SimplePizzaFactory.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
+<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ChicagoPizzaIngredientFactory.java" partName="ChicagoPizzaIngredientFactory.java" path="F:/git_up/durian_cake/java/factory2/src/ChicagoPizzaIngredientFactory.java" title="ChicagoPizzaIngredientFactory.java" tooltip="factory2/src/ChicagoPizzaIngredientFactory.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/factory2/src/ChicagoPizzaIngredientFactory.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="294" selectionTopPixel="100"/>
 </editor>
 </editors>
 <views>
@@ -201,7 +201,7 @@
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
-<info part="org.eclipse.ui.editorss" ratio="0.25" ratioLeft="250" ratioRight="750" relationship="2" relative="left"/>
+<info part="org.eclipse.ui.editorss" ratio="0.19261992" ratioLeft="261" ratioRight="1094" relationship="2" relative="left"/>
 <info folder="true" part="bottom" ratio="0.79159933" ratioLeft="490" ratioRight="129" relationship="4" relative="org.eclipse.ui.editorss">
 <folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
@@ -236,169 +236,163 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/factory/src/SimplePizzaFactory.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/factory/src/CheesePizza.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/factory/src/ClamPizza.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/factory/src/PepperoniPizza.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/factory/src/VeggiePizza.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/factory/src/PizzaStore.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/factory/src/TestMain.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/factory/src/CheesePizza.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/factory/src/Pizza.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/factory/src/PizzaStore.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/oberser/src/Subject.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/oberser/src/WeatherData.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/factory/src/SimplePizzaFactory.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/factory2/src/Pizza.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/factory2/src/Pepperoni.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/factory2/src/Clams.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/factory2/src/BlackOlives.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/factory2/src/CheesePizza.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/factory2/src/PizzaIngredientFactory.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/factory2/src/ChicagoPizzaIngredientFactory.java"/>
 </editors>
-<item historyLabel="CheesePizza.java" index="1">
-<position info="not_deleted" x="196" y="0"/>
+<item historyLabel="Pizza.java" index="0">
+<position info="not_deleted" x="1334" y="0"/>
 </item>
-<item historyLabel="ClamPizza.java" index="2">
+<item historyLabel="Pizza.java" index="0">
+<position info="not_deleted" x="184" y="0"/>
+</item>
+<item historyLabel="Pizza.java" index="0">
+<position info="not_deleted" x="203" y="0"/>
+</item>
+<item historyLabel="Pizza.java" index="0">
+<position info="not_deleted" x="278" y="0"/>
+</item>
+<item historyLabel="Pizza.java" index="0">
+<position info="not_deleted" x="565" y="0"/>
+</item>
+<item historyLabel="Pizza.java" index="0">
+<position info="not_deleted" x="611" y="0"/>
+</item>
+<item historyLabel="Pizza.java" index="0">
+<position info="not_deleted" x="662" y="0"/>
+</item>
+<item historyLabel="Pizza.java" index="0">
+<position info="not_deleted" x="1330" y="0"/>
+</item>
+<item historyLabel="Pizza.java" index="0">
+<position info="not_deleted" x="740" y="0"/>
+</item>
+<item historyLabel="Pizza.java" index="0">
+<position info="not_deleted" x="766" y="0"/>
+</item>
+<item historyLabel="Pizza.java" index="0">
+<position info="not_deleted" x="794" y="0"/>
+</item>
+<item historyLabel="Pizza.java" index="0">
+<position info="not_deleted" x="852" y="0"/>
+</item>
+<item historyLabel="Pizza.java" index="0">
+<position info="not_deleted" x="906" y="0"/>
+</item>
+<item historyLabel="Pizza.java" index="0">
+<position info="not_deleted" x="904" y="0"/>
+</item>
+<item historyLabel="Pizza.java" index="0">
+<position info="not_deleted" x="938" y="0"/>
+</item>
+<item historyLabel="Pizza.java" index="0">
+<position info="not_deleted" x="985" y="0"/>
+</item>
+<item historyLabel="Pizza.java" index="0">
+<position info="not_deleted" x="1018" y="0"/>
+</item>
+<item historyLabel="Pizza.java" index="0">
+<position info="not_deleted" x="1017" y="0"/>
+</item>
+<item historyLabel="Pizza.java" index="0">
+<position info="not_deleted" x="1050" y="0"/>
+</item>
+<item historyLabel="Pizza.java" index="0">
+<position info="not_deleted" x="1080" y="0"/>
+</item>
+<item historyLabel="Pizza.java" index="0">
+<position info="not_deleted" x="1116" y="0"/>
+</item>
+<item historyLabel="Pizza.java" index="0">
+<position info="not_deleted" x="1147" y="0"/>
+</item>
+<item historyLabel="Pizza.java" index="0">
+<position info="not_deleted" x="1173" y="0"/>
+</item>
+<item historyLabel="Pizza.java" index="0">
+<position info="not_deleted" x="1200" y="0"/>
+</item>
+<item historyLabel="Pizza.java" index="0">
+<position info="not_deleted" x="1234" y="0"/>
+</item>
+<item historyLabel="Pizza.java" index="0">
+<position info="not_deleted" x="1292" y="0"/>
+</item>
+<item historyLabel="Pizza.java" index="0">
+<position info="not_deleted" x="1316" y="0"/>
+</item>
+<item historyLabel="Pepperoni.java" index="1">
+<position info="not_deleted" x="60" y="0"/>
+</item>
+<item historyLabel="Pizza.java" index="0">
+<position info="not_deleted" x="1316" y="0"/>
+</item>
+<item historyLabel="Clams.java" index="2">
+<position info="not_deleted" x="56" y="0"/>
+</item>
+<item historyLabel="Pizza.java" index="0">
+<position info="not_deleted" x="1316" y="0"/>
+</item>
+<item historyLabel="BlackOlives.java" index="3">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="ClamPizza.java" index="2">
-<position info="not_deleted" x="63" y="0"/>
+<item historyLabel="BlackOlives.java" index="3">
+<position info="not_deleted" x="103" y="0"/>
 </item>
-<item historyLabel="ClamPizza.java" index="2">
-<position info="not_deleted" x="226" y="0"/>
+<item historyLabel="CheesePizza.java" index="4">
+<position info="not_deleted" x="396" y="0"/>
 </item>
-<item historyLabel="PepperoniPizza.java" index="3">
+<item historyLabel="PizzaIngredientFactory.java" index="5">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="PepperoniPizza.java" index="3">
+<item historyLabel="PizzaIngredientFactory.java" index="5">
 <position info="not_deleted" x="73" y="0"/>
 </item>
-<item historyLabel="PepperoniPizza.java" index="3">
-<position info="not_deleted" x="274" y="0"/>
+<item historyLabel="PizzaIngredientFactory.java" index="5">
+<position info="not_deleted" x="103" y="0"/>
 </item>
-<item historyLabel="VeggiePizza.java" index="4">
-<position info="not_deleted" x="0" y="0"/>
+<item historyLabel="PizzaIngredientFactory.java" index="5">
+<position info="not_deleted" x="135" y="0"/>
 </item>
-<item historyLabel="VeggiePizza.java" index="4">
-<position info="not_deleted" x="367" y="0"/>
+<item historyLabel="PizzaIngredientFactory.java" index="5">
+<position info="not_deleted" x="171" y="0"/>
 </item>
-<item historyLabel="SimplePizzaFactory.java" index="0">
+<item historyLabel="PizzaIngredientFactory.java" index="5">
+<position info="not_deleted" x="209" y="0"/>
+</item>
+<item historyLabel="PizzaIngredientFactory.java" index="5">
+<position info="not_deleted" x="240" y="0"/>
+</item>
+<item historyLabel="CheesePizza.java" index="4">
+<position info="not_deleted" x="396" y="0"/>
+</item>
+<item historyLabel="CheesePizza.java" index="4">
+<position info="not_deleted" x="146" y="0"/>
+</item>
+<item historyLabel="CheesePizza.java" index="4">
 <position info="not_deleted" x="211" y="0"/>
 </item>
-<item historyLabel="PizzaStore.java" index="5">
+<item historyLabel="CheesePizza.java" index="4">
+<position info="not_deleted" x="392" y="0"/>
+</item>
+<item historyLabel="PizzaIngredientFactory.java" index="5">
+<position info="not_deleted" x="240" y="0"/>
+</item>
+<item historyLabel="CheesePizza.java" index="4">
+<position info="not_deleted" x="392" y="0"/>
+</item>
+<item historyLabel="ChicagoPizzaIngredientFactory.java" index="6">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="PizzaStore.java" index="5">
-<position info="not_deleted" x="329" y="0"/>
+<item historyLabel="ChicagoPizzaIngredientFactory.java" index="6">
+<position/>
 </item>
-<item historyLabel="TestMain.java" index="6">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="TestMain.java" index="6">
-<position info="not_deleted" x="67" y="0"/>
-</item>
-<item historyLabel="TestMain.java" index="6">
-<position info="not_deleted" x="61" y="0"/>
-</item>
-<item historyLabel="TestMain.java" index="6">
-<position info="not_deleted" x="281" y="0"/>
-</item>
-<item historyLabel="PizzaStore.java" index="5">
-<position info="not_deleted" x="329" y="0"/>
-</item>
-<item historyLabel="TestMain.java" index="6">
-<position info="not_deleted" x="281" y="0"/>
-</item>
-<item historyLabel="PizzaStore.java" index="5">
-<position info="not_deleted" x="329" y="0"/>
-</item>
-<item historyLabel="TestMain.java" index="6">
-<position info="not_deleted" x="281" y="0"/>
-</item>
-<item historyLabel="TestMain.java" index="6">
-<position info="not_deleted" x="218" y="0"/>
-</item>
-<item historyLabel="CheesePizza.java" index="7">
-<position info="not_deleted" x="161" y="0"/>
-</item>
-<item historyLabel="TestMain.java" index="6">
-<position info="not_deleted" x="49" y="0"/>
-</item>
-<item historyLabel="CheesePizza.java" index="7">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="Pizza.java" index="8">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="CheesePizza.java" index="7">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="TestMain.java" index="6">
-<position info="not_deleted" x="186" y="0"/>
-</item>
-<item historyLabel="CheesePizza.java" index="7">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="Pizza.java" index="8">
-<position info="not_deleted" x="145" y="0"/>
-</item>
-<item historyLabel="CheesePizza.java" index="7">
-<position info="not_deleted" x="170" y="0"/>
-</item>
-<item historyLabel="Pizza.java" index="8">
-<position info="not_deleted" x="145" y="0"/>
-</item>
-<item historyLabel="TestMain.java" index="6">
-<position info="not_deleted" x="186" y="0"/>
-</item>
-<item historyLabel="PizzaStore.java" index="9">
-<position info="not_deleted" x="213" y="0"/>
-</item>
-<item historyLabel="CheesePizza.java" index="7">
-<position info="not_deleted" x="170" y="0"/>
-</item>
-<item historyLabel="Pizza.java" index="8">
-<position info="not_deleted" x="145" y="0"/>
-</item>
-<item historyLabel="Pizza.java" index="8">
-<position info="not_deleted" x="271" y="0"/>
-</item>
-<item historyLabel="Subject.java" index="10">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="WeatherData.java" index="11">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="Pizza.java" index="8">
-<position info="not_deleted" x="271" y="0"/>
-</item>
-<item historyLabel="Pizza.java" index="8">
-<position info="not_deleted" x="194" y="0"/>
-</item>
-<item historyLabel="Pizza.java" index="8">
-<position info="not_deleted" x="129" y="0"/>
-</item>
-<item historyLabel="PizzaStore.java" index="9">
-<position info="not_deleted" x="213" y="0"/>
-</item>
-<item historyLabel="SimplePizzaFactory.java" index="12">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="CheesePizza.java" index="7">
-<position info="not_deleted" x="170" y="0"/>
-</item>
-<item historyLabel="PizzaStore.java" index="9">
-<position info="not_deleted" x="213" y="0"/>
-</item>
-<item historyLabel="TestMain.java" index="6">
-<position info="not_deleted" x="186" y="0"/>
-</item>
-<item historyLabel="PizzaStore.java" index="9">
-<position info="not_deleted" x="213" y="0"/>
-</item>
-<item historyLabel="SimplePizzaFactory.java" index="12">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="PizzaStore.java" index="9">
-<position info="not_deleted" x="213" y="0"/>
-</item>
-<item active="true" historyLabel="SimplePizzaFactory.java" index="12">
-<position info="not_deleted" x="0" y="0"/>
+<item active="true" historyLabel="ChicagoPizzaIngredientFactory.java" index="6">
+<position/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -417,6 +411,39 @@
 </trimLayout>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ChicagoPizzaIngredientFactory.java" tooltip="factory2/src/ChicagoPizzaIngredientFactory.java">
+<persistable path="/factory2/src/ChicagoPizzaIngredientFactory.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="PizzaIngredientFactory.java" tooltip="factory2/src/PizzaIngredientFactory.java">
+<persistable path="/factory2/src/PizzaIngredientFactory.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="CheesePizza.java" tooltip="factory2/src/CheesePizza.java">
+<persistable path="/factory2/src/CheesePizza.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="BlackOlives.java" tooltip="factory2/src/BlackOlives.java">
+<persistable path="/factory2/src/BlackOlives.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Clams.java" tooltip="factory2/src/Clams.java">
+<persistable path="/factory2/src/Clams.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Pepperoni.java" tooltip="factory2/src/Pepperoni.java">
+<persistable path="/factory2/src/Pepperoni.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Cheese.java" tooltip="factory2/src/Cheese.java">
+<persistable path="/factory2/src/Cheese.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Veggies.java" tooltip="factory2/src/Veggies.java">
+<persistable path="/factory2/src/Veggies.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Sauce.java" tooltip="factory2/src/Sauce.java">
+<persistable path="/factory2/src/Sauce.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Dough.java" tooltip="factory2/src/Dough.java">
+<persistable path="/factory2/src/Dough.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Pizza.java" tooltip="factory2/src/Pizza.java">
+<persistable path="/factory2/src/Pizza.java"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="SimplePizzaFactory.java" tooltip="factory/src/SimplePizzaFactory.java">
 <persistable path="/factory/src/SimplePizzaFactory.java"/>
 </file>
@@ -428,39 +455,6 @@
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="PizzaStore.java" tooltip="factory/src/PizzaStore.java">
 <persistable path="/factory/src/PizzaStore.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Pizza.java" tooltip="factory/src/Pizza.java">
-<persistable path="/factory/src/Pizza.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="CheesePizza.java" tooltip="factory/src/CheesePizza.java">
-<persistable path="/factory/src/CheesePizza.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="TestMain.java" tooltip="factory/src/TestMain.java">
-<persistable path="/factory/src/TestMain.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="VeggiePizza.java" tooltip="factory/src/VeggiePizza.java">
-<persistable path="/factory/src/VeggiePizza.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="PepperoniPizza.java" tooltip="factory/src/PepperoniPizza.java">
-<persistable path="/factory/src/PepperoniPizza.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ClamPizza.java" tooltip="factory/src/ClamPizza.java">
-<persistable path="/factory/src/ClamPizza.java"/>
-</file>
-<file factoryID="org.eclipse.jdt.ui.ClassFileEditorInputFactory" id="org.eclipse.jdt.ui.ClassFileEditorNoSource" name="TextComponentTranslator.class" tooltip="com.sun.java.accessibility.util.java.awt.TextComponentTranslator">
-<persistable org.eclipse.jdt.ui.ClassFileIdentifier="=decorator/D:\/Application\/Java\/jre7\/lib\/ext\/jaccess.jar&lt;com.sun.java.accessibility.util.java.awt(TextComponentTranslator.class"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="TestMain.java" tooltip="decorator/src/TestMain.java">
-<persistable path="/decorator/src/TestMain.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Whip.java" tooltip="decorator/src/Whip.java">
-<persistable path="/decorator/src/Whip.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Soy.java" tooltip="decorator/src/Soy.java">
-<persistable path="/decorator/src/Soy.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Mocha.java" tooltip="decorator/src/Mocha.java">
-<persistable path="/decorator/src/Mocha.java"/>
 </file>
 </mruList>
 </workbench>

@@ -30,7 +30,9 @@
 <fullyQualifiedTypeName name="Whip"/>
 <fullyQualifiedTypeName name="java.lang.reflect.Array"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
-<fullyQualifiedTypeName name="CheesePizza"/>
 <fullyQualifiedTypeName name="SimplePizzaFactory"/>
 <fullyQualifiedTypeName name="PizzaStore"/>
+<fullyQualifiedTypeName name="Pepperoni"/>
+<fullyQualifiedTypeName name="CheesePizza"/>
+<fullyQualifiedTypeName name="PizzaIngredientFactory"/>
 </qualifiedTypeNameHistroy>
