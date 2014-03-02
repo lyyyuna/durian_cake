@@ -4,7 +4,6 @@
 <fullyQualifiedTypeName name="FlyWithWings"/>
 <fullyQualifiedTypeName name="Squeak"/>
 <fullyQualifiedTypeName name="MuteQuack"/>
-<fullyQualifiedTypeName name="MallardDuck"/>
 <fullyQualifiedTypeName name="RubberDuck"/>
 <fullyQualifiedTypeName name="DecoyDuck"/>
 <fullyQualifiedTypeName name="FlyBehavior"/>
@@ -18,7 +17,6 @@
 <fullyQualifiedTypeName name="ForecastDisplay"/>
 <fullyQualifiedTypeName name="java.util.Observer"/>
 <fullyQualifiedTypeName name="java.util.Observable"/>
-<fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="WeatherData"/>
 <fullyQualifiedTypeName name="CurrentConditionsDisplay"/>
 <fullyQualifiedTypeName name="HouseBlend"/>
@@ -35,4 +33,29 @@
 <fullyQualifiedTypeName name="Pepperoni"/>
 <fullyQualifiedTypeName name="CheesePizza"/>
 <fullyQualifiedTypeName name="PizzaIngredientFactory"/>
+<fullyQualifiedTypeName name="CoolerSingleton"/>
+<fullyQualifiedTypeName name="Singleton"/>
+<fullyQualifiedTypeName name="HotterSingleton"/>
+<fullyQualifiedTypeName name="LightOffCommand"/>
+<fullyQualifiedTypeName name="SimpleRemoteControl"/>
+<fullyQualifiedTypeName name="GarageDoorOpenCommand"/>
+<fullyQualifiedTypeName name="Light"/>
+<fullyQualifiedTypeName name="LightOnCommand"/>
+<fullyQualifiedTypeName name="CeilingFanOnCommand"/>
+<fullyQualifiedTypeName name="CeilingFanOffCommand"/>
+<fullyQualifiedTypeName name="CeilingFan"/>
+<fullyQualifiedTypeName name="GarageDoorUpCommand"/>
+<fullyQualifiedTypeName name="GarageDoorOffCommand"/>
+<fullyQualifiedTypeName name="GarageDoor"/>
+<fullyQualifiedTypeName name="Hottub"/>
+<fullyQualifiedTypeName name="Command"/>
+<fullyQualifiedTypeName name="NoCommand"/>
+<fullyQualifiedTypeName name="java.lang.Override"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="MallardDuck"/>
+<fullyQualifiedTypeName name="WildTurkey"/>
+<fullyQualifiedTypeName name="TurkeyAdapter"/>
+<fullyQualifiedTypeName name="java.util.Calendar"/>
+<fullyQualifiedTypeName name="AlternatingDinerMenuIterator"/>
+<fullyQualifiedTypeName name="MenuItem"/>
 </qualifiedTypeNameHistroy>

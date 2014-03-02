@@ -1,0 +1,12 @@
+
+public class Amplifier {
+
+	String description;
+	Tuner tuner;
+	DvdPlayer dvd;
+	CdPlayer cd;
+	
+	public Amplifier(String description) {
+		this.description = description;
+	}
+}
