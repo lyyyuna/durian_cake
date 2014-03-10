@@ -1,0 +1,6 @@
+env = Environment(tools = ['mingw'])
+
+src = 'List.cpp PrintListInReversedOrder.cpp'
+src_files = Split(src)
+
+env.Program(src_files)
