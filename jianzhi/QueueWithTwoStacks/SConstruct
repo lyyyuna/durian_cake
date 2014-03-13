@@ -1,0 +1,6 @@
+env = Environment(tools=['mingw'])
+
+src = 'QueueWithTwoStacks.cpp'
+src = Split(src)
+
+env.Program('test', src)
