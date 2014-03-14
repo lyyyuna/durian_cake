@@ -1,0 +1,5 @@
+env = Environment(tools=['mingw'])
+src = "KthNodeFromEnd.cpp List.cpp";
+src = Split(src)
+
+env.Program('test', src)

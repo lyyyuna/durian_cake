@@ -1,0 +1,18 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.6	//
+LIST_H	.\List.h	2;"	d
+ListNode	.\List.h	/^struct ListNode$/;"	s
+connect_listnode	.\List.cpp	/^connect_listnode(ListNode *p_current, ListNode *p_next)$/;"	f
+create_listnode	.\List.cpp	/^ListNode * create_listnode(int value)$/;"	f
+delete_list	.\List.cpp	/^delete_list(ListNode *p_head)$/;"	f
+delete_node	.\DeleteNodeInList.cpp	/^delete_node(ListNode** p_head, ListNode* node_delete)$/;"	f
+delete_node	.\List.cpp	/^delete_node(ListNode** p_head, int value)$/;"	f
+insert_node	.\List.cpp	/^insert_node(ListNode** p_head, int value)$/;"	f
+m_nValue	.\List.h	/^    int         m_nValue;$/;"	m	struct:ListNode
+m_pNext	.\List.h	/^    ListNode    *m_pNext;$/;"	m	struct:ListNode
+print_list	.\List.cpp	/^print_list(ListNode * p_head)$/;"	f
+print_listnode	.\List.cpp	/^print_listnode(ListNode *p_node)$/;"	f

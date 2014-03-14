@@ -1,0 +1,4 @@
+env = Environment(tools=['mingw'])
+src = 'reorder.cpp'
+src = Split(src)
+env.Program('test', src)

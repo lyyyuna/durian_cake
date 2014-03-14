@@ -1,0 +1,5 @@
+env = Environment(tools=['mingw'])
+src = 'Power.cpp'
+src = Split(src)
+
+env.Program('test', src)
