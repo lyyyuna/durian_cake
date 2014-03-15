@@ -1,0 +1,6 @@
+env = Environment(tools = ['mingw'])
+src = 'SequenceOfBST.cpp'
+
+src = Split(src)
+
+env.Program('test', src)        

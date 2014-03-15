@@ -1,0 +1,5 @@
+env = Environment(tools = ['mingw'])
+
+src = 'BinaryTree.cpp PathInTree.cpp'
+src = Split(src)
+env.Program('bt', src)
