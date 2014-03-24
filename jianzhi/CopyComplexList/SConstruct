@@ -1,0 +1,5 @@
+env = Environment(tools=['mingw'])
+src = 'ComplexList.cpp CopyComplexList.cpp'
+src = Split(src)
+
+env.Program('test', src)        
