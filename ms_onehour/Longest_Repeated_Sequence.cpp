@@ -46,3 +46,38 @@ int comlen(char * p, char * q)
     }
     return len;
 }
+
+void LRS_base(char * arr, int size)
+{
+    for(int i = 0; i < size; ++i)
+    {
+        for(int j = i+1; j < size; ++j)
+        {
+            int len = comlen(&arr[i],&arr[j]);
+            if(len > maxlen)
+            {
+                maxlen = len;
+                maxindex = i;
+            }
+        }
+    }
+    //outputLRS(arr);
+}
+
+int main()
+{
+    int len;
+    int index = 0;
+    cin >> len;
+    while (len--) {
+        int ch;
+        cin >> ch;
+        str[index++] = ch;
+    }
+    str[index] = '\0';
+
+    LRS_base(str, index);
+
+    cout << maxlen << endl;
+}
+
