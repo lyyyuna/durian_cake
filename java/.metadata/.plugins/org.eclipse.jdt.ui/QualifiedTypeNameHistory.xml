@@ -58,4 +58,5 @@
 <fullyQualifiedTypeName name="java.util.Calendar"/>
 <fullyQualifiedTypeName name="AlternatingDinerMenuIterator"/>
 <fullyQualifiedTypeName name="MenuItem"/>
+<fullyQualifiedTypeName name="java.math.BigInteger"/>
 </qualifiedTypeNameHistroy>
