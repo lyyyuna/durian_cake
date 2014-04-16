@@ -77,7 +77,7 @@ void getmac(pcap_t * fp, ip_mac & dst_ipmac,
 
             if(*(u_short *)(pkt_data+12) == htons(ETH_ARP)
                 && *(u_short*)(pkt_data+20) == htons(ARP_REPLY)
-                && *(u_long*)(pkt_data+38) == inet_addr("172.18.161.2"))
+                && *(u_long*)(pkt_data+38) == inet_addr(gateway.c_str()))
             {
                 for (int i = 0; i < 6; ++i)
                     dst_ipmac.mac[i] = *(u_char *)(pkt_data+22+i);

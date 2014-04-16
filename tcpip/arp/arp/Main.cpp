@@ -16,7 +16,7 @@ int main()
 
     cout << endl;
     cout << "select your device( choose the right index , like 0..n ): " << endl;
-    int num;
+    u_int num;
     cin >> num;
     if ( num > device_name.size()) {
         cerr << "you have select the wrong adapter " << endl;
@@ -36,7 +36,7 @@ int main()
 
         exit(1);
     }
-
+    
     /* send a fake ARP reply */
     string gateway, target;
     ip_mac dst_ipmac;
