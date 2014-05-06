@@ -122,7 +122,7 @@ void max_heapify(int * arr, int heap_size, int i)
     int largest = i;
     if ((arr[LEFT(i)] >= arr[i]) && (LEFT(i) < heap_size))
         largest = LEFT(i);
-    if ((arr[RIGHT(i)] >= arr[i]) && (RIGHT(i) < heap_size))
+    if ((arr[RIGHT(i)] >= arr[largest]) && (RIGHT(i) < heap_size))
         largest = RIGHT(i);
 
     if (largest != i)
