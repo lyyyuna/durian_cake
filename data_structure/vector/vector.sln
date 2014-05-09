@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual C++ Express 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "vector", "vector\vector.vcxproj", "{F13B9D5C-3F5C-47D5-8891-BD4C8CBC5D75}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F13B9D5C-3F5C-47D5-8891-BD4C8CBC5D75}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F13B9D5C-3F5C-47D5-8891-BD4C8CBC5D75}.Debug|Win32.Build.0 = Debug|Win32
+		{F13B9D5C-3F5C-47D5-8891-BD4C8CBC5D75}.Release|Win32.ActiveCfg = Release|Win32
+		{F13B9D5C-3F5C-47D5-8891-BD4C8CBC5D75}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
