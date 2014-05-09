@@ -38,6 +38,7 @@ protected:
         {
             s ++;
             data_allocator.destroy(tmp);
+            tmp = s;
         }
     }
 
