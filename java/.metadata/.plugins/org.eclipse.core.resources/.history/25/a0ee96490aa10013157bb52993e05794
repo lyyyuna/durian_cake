@@ -1,9 +1,0 @@
-
-import java.util.Calendar;
-
-public class AlternatingDinerMenuIterator implements Iterator {
-
-	MenuItem[] list;
-	int position;
-	
-}

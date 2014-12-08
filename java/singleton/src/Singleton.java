@@ -11,4 +11,10 @@ public class Singleton {
 		}
 		return uniqueInstance;
 	}
+	
+	public String toString()
+	{
+		
+		return "ssss";
+	}
 }

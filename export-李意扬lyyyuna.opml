@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<opml version="1.0">
+	<head>
+		<title>subscriptions</title>
+		<dateCreated>2014-11-17 10:35:33</dateCreated>
+		<ownerName></ownerName>
+	</head>
+	<body>
+		<outline text="名人" title="名人">
+			<outline text="酷 壳 - CoolShell.cn" 
+				title="酷 壳 - CoolShell.cn" type="rss"
+				htmlUrl="http://coolshell.cn" 
+				xmlUrl="http://coolshell.cn/feed" />
+			<outline text="何登成的技术博客" 
+				title="何登成的技术博客" type="rss"
+				htmlUrl="http://hedengcheng.com" 
+				xmlUrl="http://feed.feedsky.com/hedengcheng" />
+			<outline text="刘未鹏 | Mind Hacks" 
+				title="刘未鹏 | Mind Hacks" type="rss"
+				htmlUrl="http://mindhacks.cn" 
+				xmlUrl="http://mindhacks.cn/feed" />
+			<outline text="陈硕的Blog" 
+				title="陈硕的Blog" type="rss"
+				htmlUrl="http://blog.csdn.net/solstice" 
+				xmlUrl="http://blog.csdn.net/Solstice/rss/list" />
+			<outline text="Beyond the Void" 
+				title="Beyond the Void" type="rss"
+				htmlUrl="http://www.byvoid.com/" 
+				xmlUrl="https://www.byvoid.com/feed" />
+			<outline text="系统技术非业余研究" 
+				title="系统技术非业余研究" type="rss"
+				htmlUrl="http://blog.yufeng.info" 
+				xmlUrl="http://blog.yufeng.info/feed" />
+			<outline text="http://www.yinwang.org" 
+				title="http://www.yinwang.org" type="rss"
+				htmlUrl="http://www.yinwang.org/" 
+				xmlUrl="http://www.yinwang.org/atom.xml" />
+		</outline>
+		<outline text="安全" title="安全">
+			<outline text="鱼C工作室" 
+				title="鱼C工作室" type="rss"
+				htmlUrl="http://blog.fishc.com" 
+				xmlUrl="http://blog.fishc.com/feed" />
+		</outline>
+		<outline text="语言" title="语言">
+			<outline text="C++爱好者博客" 
+				title="C++爱好者博客" type="rss"
+				htmlUrl="http://www.cppfans.org" 
+				xmlUrl="http://www.cppfans.org/feed" />
+			<outline text="并发编程网 - ifeve.com" 
+				title="并发编程网 - ifeve.com" type="rss"
+				htmlUrl="http://ifeve.com" 
+				xmlUrl="http://ifeve.com/feed/" />
+			<outline text="C++博客-A Za, A Za, Fighting..." 
+				title="C++博客-A Za, A Za, Fighting..." type="rss"
+				htmlUrl="http://www.cppblog.com/Joe/" 
+				xmlUrl="http://www.cppblog.com/Joe/rss.aspx" />
+		</outline>
+		<outline text="Reverland的行知阁" 
+			title="Reverland的行知阁" type="rss"
+			htmlUrl="http://reverland.org/atom.xml" 
+			xmlUrl="http://reverland.org/atom.xml" />
+		<outline text="Ider » Ider" 
+			title="Ider » Ider" type="rss"
+			htmlUrl="http://blog.iderzheng.com" 
+			xmlUrl="http://blog.iderzheng.com/feed/" />
+		<outline text="微软、Google等面试题" 
+			title="微软、Google等面试题" type="rss"
+			htmlUrl="http://zhedahht.blog.163.com" 
+			xmlUrl="http://zhedahht.blog.163.com/rss/" />
+		<outline text="博客园_ACM博客_kuangbin 新博客kuangbin.net" 
+			title="博客园_ACM博客_kuangbin 新博客kuangbin.net" type="rss"
+			htmlUrl="http://feed.cnblogs.com/blog/u/89740/" 
+			xmlUrl="http://feed.cnblogs.com/blog/u/89740/rss" />
+		<outline text="博客园_bigwangdi" 
+			title="博客园_bigwangdi" type="rss"
+			htmlUrl="http://feed.cnblogs.com/blog/u/134488/" 
+			xmlUrl="http://feed.cnblogs.com/blog/u/134488/rss" />
+		<outline text="果冻想" 
+			title="果冻想" type="rss"
+			htmlUrl="http://www.jellythink.com" 
+			xmlUrl="http://www.jellythink.com/feed" />
+		<outline text="shell's blog" 
+			title="shell's blog" type="rss"
+			htmlUrl="http://shell909090.org/blog" 
+			xmlUrl="http://shell909090.com/blog/feed/" />
+		<outline text="Lenky个人站点" 
+			title="Lenky个人站点" type="rss"
+			htmlUrl="http://www.lenky.info" 
+			xmlUrl="http://lenky.info/feed/" />
+		<outline text="Blog of Felix021" 
+			title="Blog of Felix021" type="rss"
+			htmlUrl="http://www.felix021.com/blog/index.php" 
+			xmlUrl="http://www.felix021.com/blog/feed.php" />
+	</body>
+</opml>
