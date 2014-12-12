@@ -52,7 +52,7 @@ namespace BrickGame
                 g.FillRectangle(sbrush, rect);
             }
 
-            g.Dispose();
+            
         }
 
         public void Run()
