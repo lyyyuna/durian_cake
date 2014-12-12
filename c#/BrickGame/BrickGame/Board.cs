@@ -7,6 +7,14 @@ using System.Drawing;
 
 namespace BrickGame
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    public enum BoardDirection
+    {
+        Left, Right, None
+    }
+
     class Board
     {
         public int m_nBoardWidth = 170;
@@ -14,6 +22,8 @@ namespace BrickGame
         // 坐标
         public int XPos { get; set; }
         public int YPos { get; set; }
+        public int SpeedX { get; set; }
+        public BoardDirection Direction { get; set; }
 
         /// <summary>
         /// 
@@ -28,6 +38,8 @@ namespace BrickGame
             this.YPos = y;
             m_nBoardHeight = nBoardHeight;
             m_nBoardWidth = nBoardWidth;
+
+            this.SpeedX = 3;
         }
 
         public void Draw(Graphics g)
@@ -41,6 +53,29 @@ namespace BrickGame
             }
 
             g.Dispose();
+        }
+
+        public void Run()
+        {
+            switch (Direction)
+            {
+                case BoardDirection.Left:
+                    {
+                        if (XPos > 0)
+                        {
+                            XPos -= SpeedX;
+                        }
+                    } break;
+                case BoardDirection.Right:
+                    {
+                        if (XPos + m_nBoardWidth < 270)
+                        {
+                            XPos += SpeedX;
+                        }
+                    } break;
+                default:
+                    break;
+            }
         }
     }
 }

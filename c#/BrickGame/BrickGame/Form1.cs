@@ -12,6 +12,8 @@ namespace BrickGame
 {
     public partial class Form1 : Form
     {
+        private Board m_board;
+
         public Form1()
         {
             InitializeComponent();
@@ -31,8 +33,8 @@ namespace BrickGame
         public int m_nLeft = 90;
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
-            var board = new Board(m_nLeft, m_nTop, 90, 15);
-            board.Draw(e.Graphics);
+            // var board = new Board(m_nLeft, m_nTop, 90, 15);
+            m_board.Draw(e.Graphics);
         }
 
         private void Form1_MouseDown(object sender, MouseEventArgs e)
@@ -41,6 +43,39 @@ namespace BrickGame
             m_nLeft = e.Y;
             this.Refresh();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            m_board = new Board(m_nLeft, m_nTop, 90, 15);
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Left:
+                    {
+                        m_board.Direction = BoardDirection.Left;
+                    }
+                    break;
+                case Keys.Right:
+                    {
+                        m_board.Direction = BoardDirection.Right;
+                    }
+                    break;
+
+                default:
+                    {
+                        m_board.Direction = BoardDirection.None;
+                    }
+                    break;
+            }
+
+            m_board.Run();
+            this.Refresh();
+        }
+
+
 
 
 
