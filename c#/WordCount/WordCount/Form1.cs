@@ -30,7 +30,7 @@ namespace WordCount
         private void button1_Click(object sender, EventArgs e)
         {
             listBox1.Items.Clear();
-            string strRemove = Regex.Replace(richTextBox1.Text, @"[\p{P}*]", " ");
+            string strRemove = Regex.Replace(richTextBox1.Text, @"[\p{P}]", " ");
             string[] strWord = Regex.Split(strRemove, @"\s");
             Dictionary<string, int> dicWord2Num = new Dictionary<string, int>();
             foreach (string strTemp in strWord)
