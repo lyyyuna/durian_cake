@@ -37,7 +37,7 @@ namespace BrickGame
             using (var sbrush = new SolidBrush(Color.LightBlue))
             {
                 var p = new Pen(Color.SaddleBrown);
-                var Rect = new Rectangle(XPos, YPos, m_BoardWidth, m_BoardHeight);
+                Rect = new Rectangle(XPos, YPos, m_BoardWidth, m_BoardHeight);
                 g.DrawRectangle(p, Rect);
                 g.FillRectangle(sbrush, Rect);
             }

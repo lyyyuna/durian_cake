@@ -20,7 +20,7 @@ namespace BrickGame
             // g.Clear(Color.Black);
             using (var sbrush = new SolidBrush(Color.Red))
             {
-                var Rect = new Rectangle(XPos, YPos, 20, 20);
+                Rect = new Rectangle(XPos, YPos, 20, 20);
                 var p = new Pen(Color.Purple);
                 g.DrawEllipse(p, Rect);
                 g.FillEllipse(sbrush, Rect);

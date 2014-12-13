@@ -17,7 +17,7 @@ namespace BrickGame
         {
             m_Rects = new List<CommonBrick>();
 
-            for (int i = 70; i < 70 + _height; i+=20)
+            for (int i = 90; i < 90 + _height; i+=20)
             {
                 for (int j = 5; j < _width-5; j+=20)
                 {

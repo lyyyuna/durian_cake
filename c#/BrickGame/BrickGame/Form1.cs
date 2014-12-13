@@ -16,6 +16,9 @@ namespace BrickGame
         private Timer m_timer;
         Bitmap m_bitmap = null;
         bool m_bKeyDown = false;
+        Bricks m_bricks;
+        Ball m_ball;
+        Board m_board;
 
         public Form1()
         {
@@ -57,10 +60,10 @@ namespace BrickGame
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            var m_board = new Board(m_nLeft, m_nTop, 5);
-            var m_ball = new Ball(m_nLeft, m_nTop, 3, 3);
+            m_board = new Board(m_nLeft, m_nTop, 5);
+            m_ball = new Ball(m_nLeft, m_nTop, 3, 3);
             m_bitmap = new Bitmap(this.Width, this.Height);
-            var m_bricks = new Bricks();
+            m_bricks = new Bricks();
 
             m_lstGameObject.Add(m_ball);
             m_lstGameObject.Add(m_board);
@@ -72,6 +75,44 @@ namespace BrickGame
             m_timer.Start();
         }
 
+        private void HitDetect()
+        {
+            // 砖头与球是否有相交的部分
+            for (int i = 0; i < m_bricks.m_Rects.Count; i++)
+            {
+                if (m_ball.Rect.IntersectsWith(m_bricks.m_Rects[i].Rect))
+                {
+                    m_bricks.m_Rects.Remove(m_bricks.m_Rects[i]);
+                    m_ball.SpeedX = -m_ball.SpeedX;
+                    m_ball.SpeedY = -m_ball.SpeedY;
+                }
+            }
+
+            // 检测球是否和挡板碰撞
+            if (m_ball.Rect.IntersectsWith(m_board.Rect))
+            {
+                switch (m_board.Direction)
+                {
+                    case BoardDirection.Left:
+                        {
+                            m_ball.SpeedX = -(new Random().Next(2, 4));
+                        } break;
+                    case BoardDirection.Right:
+                        {
+                            m_ball.SpeedY = (new Random().Next(2, 4));
+                        } break;
+                    default:
+                        break;
+                }
+                m_ball.SpeedY = (new Random().Next(2, 4));
+            }
+        }
+
+        /// <summary>
+        /// 定时服务
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void timer_tick(object sender, EventArgs e)
         {
             foreach (var go in m_lstGameObject)
@@ -84,6 +125,8 @@ namespace BrickGame
                 
                 go.Run();
             }
+
+            HitDetect();
 
             Graphics g = this.CreateGraphics();
             
@@ -134,15 +177,6 @@ namespace BrickGame
         {
             m_bKeyDown = false;
         }
-
-
-
-
-
-        
-
-
-
 
     }
 }
