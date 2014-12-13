@@ -33,6 +33,7 @@ namespace BrickGame
 
         public override void Draw(Graphics g)
         {
+            // g.Clear(Color.Black);
             using (var sbrush = new SolidBrush(Color.LightBlue))
             {
                 var p = new Pen(Color.SaddleBrown);
@@ -55,7 +56,7 @@ namespace BrickGame
                     } break;
                 case BoardDirection.Right:
                     {
-                        if (XPos < 270)
+                        if (XPos + m_BoardWidth< 270)
                         {
                             XPos += SpeedX;
                         }

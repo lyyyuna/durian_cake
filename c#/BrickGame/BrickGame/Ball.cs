@@ -17,6 +17,7 @@ namespace BrickGame
 
         public override void Draw(Graphics g)
         {
+            // g.Clear(Color.Black);
             using (var sbrush = new SolidBrush(Color.Red))
             {
                 var Rect = new Rectangle(XPos, YPos, 20, 20);
@@ -32,13 +33,13 @@ namespace BrickGame
             YPos -= SpeedY;
 
             if (XPos <= 0)
-                SpeedX = (new Random().Next(3, 5));
+                SpeedX = (new Random().Next(2, 3));
             if (XPos >= 250)
-                SpeedX = -(new Random().Next(3, 5));
+                SpeedX = -(new Random().Next(2, 3));
             if (YPos <= 100)
-                SpeedY = -(new Random().Next(3, 8));
+                SpeedY = -(new Random().Next(2, 5));
             if (YPos >= 370)
-                SpeedY += (new Random().Next(3, 8));
+                SpeedY += (new Random().Next(2, 5));
         }
     }
 }

@@ -14,6 +14,7 @@ namespace BrickGame
     {
         List<GameObject> m_lstGameObject = new List<GameObject>();
         private Timer m_timer;
+        Bitmap m_bitmap = null;
 
         public Form1()
         {
@@ -34,12 +35,16 @@ namespace BrickGame
         public int m_nLeft = 90;
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
-            Graphics g = e.Graphics;
+            /*
+            Graphics g = this.CreateGraphics();
             
             foreach( var go in m_lstGameObject)
             {
-                go.Draw(g);
+                go.Draw(Graphics.FromImage(m_bitmap));
             }
+            g.DrawImage(m_bitmap, 0, 0);
+            g.Dispose();
+            */
         }
 
         private void Form1_MouseDown(object sender, MouseEventArgs e)
@@ -53,6 +58,7 @@ namespace BrickGame
         {
             var m_board = new Board(m_nLeft, m_nTop, 5);
             var m_ball = new Ball(m_nLeft, m_nTop, 3, 3);
+            m_bitmap = new Bitmap(this.Width, this.Height);
 
             m_lstGameObject.Add(m_ball);
             m_lstGameObject.Add(m_board);
@@ -70,7 +76,18 @@ namespace BrickGame
                 if (go is Ball)
                     go.Run();
             }
-            this.Refresh();
+
+            Graphics g = this.CreateGraphics();
+            
+            // g.Clear(Color.Black);
+            var g_tmp = Graphics.FromImage(m_bitmap);
+            g_tmp.Clear(Color.Black);
+            foreach (var go in m_lstGameObject)
+            {
+                go.Draw(g_tmp);
+            }
+            g.DrawImage(m_bitmap, 0, 0);
+            g.Dispose();
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
@@ -101,7 +118,7 @@ namespace BrickGame
                     go.Run();
                 }
             }
-            this.Refresh();
+            // this.Refresh();
         }
 
 
