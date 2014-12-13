@@ -15,6 +15,7 @@ namespace BrickGame
         List<GameObject> m_lstGameObject = new List<GameObject>();
         private Timer m_timer;
         Bitmap m_bitmap = null;
+        bool m_bKeyDown = false;
 
         public Form1()
         {
@@ -75,8 +76,13 @@ namespace BrickGame
         {
             foreach (var go in m_lstGameObject)
             {
-                if (go is Ball)
-                    go.Run();
+                if (go is Board)
+                {
+                    if (!m_bKeyDown)
+                        continue;
+                }
+                
+                go.Run();
             }
 
             Graphics g = this.CreateGraphics();
@@ -94,6 +100,7 @@ namespace BrickGame
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
+            m_bKeyDown = true;
             foreach (var go in m_lstGameObject)
             { 
                 if (go is Board)
@@ -121,6 +128,11 @@ namespace BrickGame
                 }
             }
             // this.Refresh();
+        }
+
+        private void Form1_KeyUp(object sender, KeyEventArgs e)
+        {
+            m_bKeyDown = false;
         }
 
 
