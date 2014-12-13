@@ -1,21 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Drawing;
 
 namespace BrickGame
 {
-    class Ball
+    class Ball : GameObject
     {
-        public int XPos { get; set; }
-        public int YPos { get; set; }
-        public int SpeedX { get; set; }
-        public int SpeedY { get; set; }
-
-        // public Rectangle rect;
-
         public Ball(int x, int y, int speedX, int speedY)
         {
             this.XPos = x;
@@ -24,18 +15,18 @@ namespace BrickGame
             this.SpeedY = speedY;
         }
 
-        public void Draw(Graphics g)
+        public override void Draw(Graphics g)
         {
             using (var sbrush = new SolidBrush(Color.Red))
             {
-                var rect = new Rectangle(XPos, YPos, 20, 20);
-                g.DrawEllipse(new Pen(Color.Purple), rect);
-                g.FillEllipse(sbrush, rect);
-
+                var Rect = new Rectangle(XPos, YPos, 20, 20);
+                var p = new Pen(Color.Purple);
+                g.DrawEllipse(p, Rect);
+                g.FillEllipse(sbrush, Rect);
             }
         }
 
-        public void run()
+        public override void Run()
         {
             XPos += SpeedX;
             YPos -= SpeedY;
@@ -44,7 +35,7 @@ namespace BrickGame
                 SpeedX = (new Random().Next(3, 5));
             if (XPos >= 250)
                 SpeedX = -(new Random().Next(3, 5));
-            if (YPos <= 70)
+            if (YPos <= 100)
                 SpeedY = -(new Random().Next(3, 8));
             if (YPos >= 370)
                 SpeedY += (new Random().Next(3, 8));
