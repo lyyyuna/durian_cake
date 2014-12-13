@@ -59,9 +59,11 @@ namespace BrickGame
             var m_board = new Board(m_nLeft, m_nTop, 5);
             var m_ball = new Ball(m_nLeft, m_nTop, 3, 3);
             m_bitmap = new Bitmap(this.Width, this.Height);
+            var m_bricks = new Bricks();
 
             m_lstGameObject.Add(m_ball);
             m_lstGameObject.Add(m_board);
+            m_lstGameObject.Add(m_bricks);
 
             m_timer = new Timer();
             m_timer.Interval = 10;

@@ -46,6 +46,8 @@
   <ItemGroup>
     <Compile Include="Ball.cs" />
     <Compile Include="Board.cs" />
+    <Compile Include="Bricks.cs" />
+    <Compile Include="CommonBrick.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
