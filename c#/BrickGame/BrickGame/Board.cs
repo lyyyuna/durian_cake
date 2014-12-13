@@ -29,6 +29,7 @@ namespace BrickGame
             this.XPos = x;
             this.YPos = y;
             this.SpeedX = speed;
+            this.Direction = BoardDirection.None;
         }
 
         public override void Draw(Graphics g)

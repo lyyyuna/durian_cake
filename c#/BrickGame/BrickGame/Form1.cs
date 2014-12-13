@@ -25,9 +25,10 @@ namespace BrickGame
             InitializeComponent();
         }
 
+        int score;
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
-            this.textBox1.Text = "";
+
         }
 
         private void Form1_MouseMove(object sender, MouseEventArgs e)
@@ -60,7 +61,10 @@ namespace BrickGame
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            score = 0;
+
             m_board = new Board(m_nLeft, m_nTop, 5);
+            
             m_ball = new Ball(m_nLeft, m_nTop, 3, 3);
             m_bitmap = new Bitmap(this.Width, this.Height);
             m_bricks = new Bricks();
@@ -75,16 +79,50 @@ namespace BrickGame
             m_timer.Start();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void HitDetect()
         {
-            // 砖头与球是否有相交的部分
+            // 砖头与球是否有相交的部分, 及判断球该往哪里反弹
             for (int i = 0; i < m_bricks.m_Rects.Count; i++)
             {
                 if (m_ball.Rect.IntersectsWith(m_bricks.m_Rects[i].Rect))
                 {
+                    var tmp = m_bricks.m_Rects[i].Rect;
+                    // m_bricks.m_Rects.Remove(m_bricks.m_Rects[i]);
+                    int FocusX = m_ball.Rect.X + m_ball.Rect.Width/2;
+                    int FocusY = m_ball.Rect.Bottom + m_ball.Rect.Height/2;
+                    if (FocusY > tmp.Bottom && FocusX > tmp.Left && FocusX < tmp.Right)
+                    {
+                        m_ball.SpeedX = m_ball.SpeedX;
+                        m_ball.SpeedY = -m_ball.SpeedY;
+                    }
+                    else if (FocusY < tmp.Top && FocusX > tmp.Left && FocusX < tmp.Right)
+                    {
+                        m_ball.SpeedX = m_ball.SpeedX;
+                        m_ball.SpeedY = -m_ball.SpeedY;
+                    }
+                    else if (FocusX < tmp.Left && FocusY > tmp.Top && FocusY < tmp.Bottom)
+                    {
+                        m_ball.SpeedX = -m_ball.SpeedX;
+                        m_ball.SpeedY = m_ball.SpeedY;
+                    }
+                    else if (FocusX > tmp.Right && FocusY > tmp.Top && FocusY < tmp.Bottom)
+                    {
+                        m_ball.SpeedX = -m_ball.SpeedX;
+                        m_ball.SpeedY = m_ball.SpeedY;
+                    }
+                    else
+                    {
+                        m_ball.SpeedX = -m_ball.SpeedX;
+                        m_ball.SpeedY = -m_ball.SpeedY;
+                    }
+
+                    score += 1;
+                    this.textBox1.Text = score.ToString();
                     m_bricks.m_Rects.Remove(m_bricks.m_Rects[i]);
-                    m_ball.SpeedX = -m_ball.SpeedX;
-                    m_ball.SpeedY = -m_ball.SpeedY;
+                    break;
                 }
             }
 
@@ -95,16 +133,16 @@ namespace BrickGame
                 {
                     case BoardDirection.Left:
                         {
-                            m_ball.SpeedX = -(new Random().Next(2, 4));
+                            m_ball.SpeedX = -(new Random().Next(1, 2));
                         } break;
                     case BoardDirection.Right:
                         {
-                            m_ball.SpeedY = (new Random().Next(2, 4));
+                            m_ball.SpeedX = (new Random().Next(1, 2));
                         } break;
                     default:
                         break;
                 }
-                m_ball.SpeedY = (new Random().Next(2, 4));
+                m_ball.SpeedY = (new Random().Next(1, 2));
             }
         }
 
@@ -176,6 +214,7 @@ namespace BrickGame
         private void Form1_KeyUp(object sender, KeyEventArgs e)
         {
             m_bKeyDown = false;
+            m_board.Direction = BoardDirection.None;
         }
 
     }

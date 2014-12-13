@@ -20,7 +20,7 @@ namespace BrickGame
             // g.Clear(Color.Black);
             using (var sbrush = new SolidBrush(Color.Red))
             {
-                Rect = new Rectangle(XPos, YPos, 20, 20);
+                Rect = new Rectangle(XPos, YPos, 10, 10);
                 var p = new Pen(Color.Purple);
                 g.DrawEllipse(p, Rect);
                 g.FillEllipse(sbrush, Rect);
@@ -33,13 +33,13 @@ namespace BrickGame
             YPos -= SpeedY;
 
             if (XPos <= 0)
-                SpeedX = (new Random().Next(2, 3));
+                SpeedX = (new Random().Next(1, 2));
             if (XPos >= 250)
-                SpeedX = -(new Random().Next(2, 3));
+                SpeedX = -(new Random().Next(1, 2));
             if (YPos <= 100)
-                SpeedY = -(new Random().Next(2, 5));
-            if (YPos >= 370)
-                SpeedY += (new Random().Next(2, 5));
+                SpeedY = -(new Random().Next(1, 2));
+            if (YPos >= 380)
+                SpeedY += (new Random().Next(1, 2));
         }
     }
 }
