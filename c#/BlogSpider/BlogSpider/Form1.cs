@@ -35,5 +35,21 @@ namespace BlogSpider
                 m_Wd.AddUrlQueue(strTmp);
             }
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            deles = new TaskDelegate(new ccTaskDelegate());
+            this.textBox1.Text = "lyyyuna";
+        }
+
+        private void ParseWebPage(string strVisitUrl, string strPageContent)
+        {
+            bool bNoArti
+        }
+
+        private bool TakeUrls(string strVisitUrl, string strReturnPage)
+        {
+
+        }
     }
 }
