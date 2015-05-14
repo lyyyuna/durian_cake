@@ -90,5 +90,43 @@ typedef struct  _DIR_ENTRY
 
 #pragma pack()
 
+//
+// Directory Entry Attributes
+//
+
+#define DIR_ATTR_READONLY   0x01
+#define DIR_ATTR_HIDDEN     0x02
+#define DIR_ATTR_SYSTEM     0x04
+#define DIR_ATTR_VOLUME     0x08
+#define DIR_ATTR_DIRECTORY  0x10
+#define DIR_ATTR_ARCHIVE    0x20
+
+DRIVER_INITIALIZE DriverEntry;
+
+EVT_WDF_DRIVER_DEVICE_ADD RamdiskEvtDeviceAdd;
+
+EVT_WDF_DEVICE_CONTEXT_CLEANUP RamdiskEvtDeviceContextCleanup;
+
+EVT_WDF_IO_QUEUE_IO_READ RamdiskEvtIoRead;
+EVT_WDF_IO_QUEUE_IO_WRITE RamdiskEvtIoWrite;
+EVT_WDF_IO_QUEUE_IO_DEVICE_CONTROL RamdiskEvtIoDeviceControl;
+
+VOID
+RamdiskQueryDiskRegParameters(
+__in PWSTR RegistryPath,
+__in PDISK_INFO DiskRegInfo
+);
+
+NTSTATUS
+RamdiskFormatDisk(
+IN PDEVICE_EXTENSION DeviceExtension
+);
+
+BOOLEAN
+RamdiskCheckParameters(
+IN PDEVICE_EXTENSION devExt,
+IN LARGE_INTEGER ByteOffset,
+IN size_t Length
+);
 
 #endif

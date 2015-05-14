@@ -13,6 +13,9 @@ Microsoft的C/C++编译器在alloc_text的使用上加了两个讨厌的限制：
 #ifdef ALLOC_PRAGMA
 #pragma alloc_text(INIT, DriverEntry)
 #pragma alloc_text(PAGE, RamdiskEvtDeviceAdd)
+#pragma alloc_text(PAGE, RamdiskEvtDeviceContextCleanup)
+#pragma alloc_text(PAGE, RamdiskQueryDiskRegParameters)
+#pragma alloc_text(PAGE, RamdiskFormatDisk)
 #endif
 
 NTSTATUS
@@ -143,7 +146,7 @@ IN PWDFDEVICE_INIT DeviceInit
 }
 
 VOID
-RamdiskQuerydiskRegParameters(
+RamdiskQueryDiskRegParameters(
 IN PWSTR RegistryPath,
 IN PDISK_INFO DiskRegInfo
 )
@@ -271,9 +274,323 @@ IN PDEVICE_EXTENSION devExt
 	rootDirEntries = devExt->DiskRegInfo.RootDirEntries;
 	sectorsPerCluster = devExt->DiskRegInfo.SectorsPerClusters;
 
+	// 由于根目录入口点只使用32字节，但是最少占用一个扇区，这里为了充分利用空间，
+	// 在用户指定的数目不合适时，会修正这个数目，以使扇区空间得到充分利用。
 	if (rootDirEntries & (DIR_ENTRIES_PER_SECTOR - 1))
 	{
 		rootDirEntries = (rootDirEntries + (DIR_ENTRIES_PER_SECTOR - 1)) & ~(DIR_ENTRIES_PER_SECTOR - 1);
 	}
 
+	KdPrint((
+		"root dir entries: %ld\n sectors/cluster: %ld\n",
+		rootDirEntries, sectorsPerCluster
+		));
+
+	// 一开始的跳转指令，填入微软制定的硬编码
+	bootSector->bsJump[0] = 0xeb;
+	bootSector->bsJump[1] = 0x3c;
+	bootSector->bsJump[2] = 0x90;
+
+	// set oem name to "rajuram "
+	bootSector->bsOemName[0] = 'R';
+	bootSector->bsOemName[1] = 'a';
+	bootSector->bsOemName[2] = 'j';
+	bootSector->bsOemName[3] = 'u';
+	bootSector->bsOemName[4] = 'R';
+	bootSector->bsOemName[5] = 'a';
+	bootSector->bsOemName[6] = 'm';
+	bootSector->bsOemName[7] = ' ';
+
+	bootSector->bsBytesPerSec = (SHORT)devExt->DiskGeometry.BytesPerSector;
+	bootSector->bsResSectors = 1;
+	bootSector->bsFATs = 1;
+	bootSector->bsRootDirEnts = (USHORT)rootDirEntries;
+	// 计算总扇区数
+	bootSector->bsSectors = (USHORT)(devExt->DiskRegInfo.DiskSize / devExt->DiskGeometry.BytesPerSector);
+	bootSector->bsMedia = (UCHAR)devExt->DiskGeometry.MediaType;
+	// 计算每个簇的扇区数
+	bootSector->bsSecPerClus = (UCHAR)sectorsPerCluster;
+
+	// fat表数目是总扇区数减去保留的扇区数，再减去根目录入口点所占的扇区数，
+	// 然后除以每个簇的扇区数。
+	// 最后结果加上 fat 0 1 项（保留项）的，即+2
+	fatEntries = (bootSector->bsSectors -
+		bootSector->bsResSectors -
+		bootSector->bsRootDirEnts / DIR_ENTRIES_PER_SECTOR) / bootSector->bsSecPerClus + 2;
+
+	// 根据簇数目选择 fat12 or fat16
+	if (fatEntries > 4087)
+	{
+		fatType = 16;
+		fatSectorCnt = (fatEntries * 2 + 511) / 512;
+		fatEntries = fatEntries + fatSectorCnt;
+		fatSectorCnt = (fatEntries * 2 + 511) / 512;
+	}
+	else
+	{
+		fatType = 12;
+		fatSectorCnt = (((fatEntries * 3 + 1) / 2) + 511) / 512;
+		fatEntries = fatEntries + fatSectorCnt;
+		fatSectorCnt = (((fatEntries * 3 + 1) / 2) + 511) / 512;
+	}
+
+	bootSector->bsFATsecs = fatSectorCnt;
+	bootSector->bsSecPerTrack = (USHORT)devExt->DiskGeometry.SectorsPerTrack;
+	bootSector->bsHeads = (USHORT)devExt->DiskGeometry.TracksPerCylinder;
+	bootSector->bsBootSignature = 0x29;
+	bootSector->bsVolumeID = 0x12345678;
+
+	// set label to "ramdisk "
+	bootSector->bsLabel[0] = 'R';
+	bootSector->bsLabel[1] = 'a';
+	bootSector->bsLabel[2] = 'm';
+	bootSector->bsLabel[3] = 'D';
+	bootSector->bsLabel[4] = 'i';
+	bootSector->bsLabel[5] = 's';
+	bootSector->bsLabel[6] = 'k';
+	bootSector->bsLabel[7] = ' ';
+	bootSector->bsLabel[8] = ' ';
+	bootSector->bsLabel[9] = ' ';
+	bootSector->bsLabel[10] = ' ';
+
+	// set filesystemtype to fat1?
+	bootSector->bsFileSystemType[0] = 'F';
+	bootSector->bsFileSystemType[1] = 'A';
+	bootSector->bsFileSystemType[2] = 'T';
+	bootSector->bsFileSystemType[3] = '1';
+	bootSector->bsFileSystemType[4] = '?';
+	bootSector->bsFileSystemType[5] = ' ';
+	bootSector->bsFileSystemType[6] = ' ';
+	bootSector->bsFileSystemType[7] = ' ';
+
+	bootSector->bsFileSystemType[4] = (fatType == 16) ? '6' : '2';
+
+	bootSector->bsSig2[0] = 0x55;
+	bootSector->bsSig2[1] = 0xAA;
+
+	// fat is located imediately following the boot sector
+	// 定位fat表项，dbr只有一个扇区，所以fat表项容易定位
+	// 保留项给 0xFF
+	firstFatSector = (PUCHAR)(bootSector + 1);
+	firstFatSector[0] = (UCHAR)devExt->DiskGeometry.MediaType;
+	firstFatSector[1] = 0xFF;
+	firstFatSector[2] = 0xFF;
+
+	if (fatType == 16)
+	{
+		firstFatSector[3] = 0xFF;
+	}
+
+	// root directory
+	rootDir = (PDIR_ENTRY)(bootSector + 1 + fatSectorCnt);
+
+	// 设置设备名称
+	rootDir->deName[0] = 'M';
+	rootDir->deName[1] = 'S';
+	rootDir->deName[2] = '-';
+	rootDir->deName[3] = 'R';
+	rootDir->deName[4] = 'A';
+	rootDir->deName[5] = 'M';
+	rootDir->deName[6] = 'D';
+	rootDir->deName[7] = 'R';
+
+	rootDir->deExtension[0] = 'I';
+	rootDir->deExtension[1] = 'V';
+	rootDir->deExtension[2] = 'E';
+
+	rootDir->deAttributes = DIR_ATTR_VOLUME;
+
+	return STATUS_SUCCESS;
+}
+
+BOOLEAN
+RamdiskCheckParameters(
+IN PDEVICE_EXTENSION devExt,
+IN LARGE_INTEGER ByteOffset,
+IN size_t	Length
+)
+{
+	if (devExt->DiskRegInfo.DiskSize < Length ||
+		ByteOffset.QuadPart < 0 || // QuadPart is signed so check for negative values
+		((ULONGLONG)ByteOffset.QuadPart >(devExt->DiskRegInfo.DiskSize - Length)) ||
+		(Length & (devExt->DiskGeometry.BytesPerSector - 1))) 
+	{
+
+		//
+		// Do not give an I/O boost for parameter errors.
+		//
+
+		KdPrint((
+			"Error invalid parameter\n"
+			"ByteOffset: %x\n"
+			"Length: %d\n",
+			ByteOffset,
+			Length
+			));
+
+		return FALSE;
+	}
+
+	return TRUE;
+}
+
+/*
+When a driver creates an object, it sometimes allocates object-specific
+memory buffers and stores the buffer pointers in the object's context space. 
+The driver's EvtCleanupCallback or EvtDestroyCallback callback function can 
+deallocate these memory buffers.
+*/
+VOID
+RamdiskEvtDeviceContextCleanup(
+IN WDFDEVICE Device
+)
+{
+	PDEVICE_EXTENSION pDeviceExtension = DeviceGetExtension(Device);
+
+	PAGED_CODE();
+
+	if (pDeviceExtension->DiskImage)
+	{
+		ExFreePool(pDeviceExtension->DiskImage);
+	}
+}
+
+VOID
+RamdiskEvtIoRead(
+IN WDFQUEUE Queue,
+IN WDFREQUEST Request,
+IN size_t Length
+)
+{
+	PDEVICE_EXTENSION devExt = QueueGetExtension(Queue)->DeviceExtension;
+	NTSTATUS status = STATUS_INVALID_PARAMETER;
+	WDF_REQUEST_PARAMETERS Parameters;
+	LARGE_INTEGER ByteOffset;
+	WDFMEMORY hMemory;
+
+	WDF_REQUEST_PARAMETERS_INIT(&Parameters);
+	// 从请求中获取参数信息
+	WdfRequestGetParameters(Request, &Parameters);
+	// 将读的起始位置取出
+	ByteOffset.QuadPart = Parameters.Parameters.Read.DeviceOffset;
+	// 这里有一个自己实现的 参数检察函数。
+	// 由于读取范围不能超过磁盘镜像大小，且必须是扇区对齐，所以这里必须要有一个参数检查。
+	if (RamdiskCheckParameters(devExt, ByteOffset, Length))
+	{
+		status = WdfRequestRetrieveOutputMemory(Request, &hMemory);
+		if (NT_SUCCESS(status))
+		{
+			status = WdfMemoryCopyFromBuffer(hMemory,
+				0,
+				devExt->DiskImage + ByteOffset.LowPart,
+				Length);
+		}
+			
+	}
+
+	WdfRequestCompleteWithInformation(Request, status, (ULONG_PTR)Length);
+
+}
+
+VOID
+RamdiskEvtIoWrite(
+IN WDFQUEUE Queue,
+IN WDFREQUEST Request,
+IN size_t Length
+)
+{
+	PDEVICE_EXTENSION devEvt = QueueGetExtension(Queue)->DeviceExtension;
+	NTSTATUS status = STATUS_INVALID_PARAMETER;
+	WDF_REQUEST_PARAMETERS Parameters;
+	LARGE_INTEGER ByteOffset;
+	WDFMEMORY hMemory;
+
+	WDF_REQUEST_PARAMETERS_INIT(&Parameters);
+
+	WdfRequestGetParameters(Request, &Parameters);
+
+	ByteOffset.QuadPart = Parameters.Parameters.Write.DeviceOffset;
+
+	if (RamdiskCheckParameters(devEvt, ByteOffset, Length))
+	{
+		status = WdfRequestRetrieveInputMemory(Request, &hMemory);
+		if (NT_SUCCESS(status))
+		{
+			status = WdfMemoryCopyToBuffer(hMemory,
+				0,
+				devEvt->DiskImage + ByteOffset.LowPart,
+				Length);
+		}
+	}
+
+	WdfRequestCompleteWithInformation(Request, status, (ULONG_PTR)Length);
+}
+
+VOID
+RamdiskEvtIoDeviceControl(
+IN WDFQUEUE Queue,
+IN WDFREQUEST Request,
+IN size_t OutputBufferLength,
+IN size_t InputBufferLength,
+IN ULONG IoControlCode
+)
+{
+	NTSTATUS status = STATUS_INVALID_DEVICE_REQUEST;
+	ULONG_PTR information = 0;
+	size_t bufSize;
+	PDEVICE_EXTENSION devExt = QueueGetExtension(Queue)->DeviceExtension;
+
+	UNREFERENCED_PARAMETER(OutputBufferLength);
+	UNREFERENCED_PARAMETER(InputBufferLength);
+
+	switch (IoControlCode)
+	{
+	case IOCTL_DISK_GET_PARTITION_INFO:
+	{
+		PPARTITION_INFORMATION outputBuffer;
+		PBOOT_SECTOR bootSector = (PBOOT_SECTOR)devExt->DiskImage;
+
+		information = sizeof(PARTITION_INFORMATION);
+
+		status = WdfRequestRetrieveOutputBuffer(Request, sizeof(PARTITION_INFORMATION),
+			&outputBuffer, &bufSize);
+		if (NT_SUCCESS(status))
+		{
+			outputBuffer->PartitionType = (bootSector->bsFileSystemType[4] == '6') ? PARTITION_FAT_16 : PARTITION_FAT_12;
+
+			outputBuffer->BootIndicator = FALSE;
+			outputBuffer->RecognizedPartition = TRUE; 
+			outputBuffer->RewritePartition = FALSE;
+			outputBuffer->StartingOffset.QuadPart = 0;
+			outputBuffer->PartitionLength.QuadPart = devExt->DiskRegInfo.DiskSize;
+			outputBuffer->HiddenSectors = (ULONG)(1L);
+			outputBuffer->PartitionNumber = (ULONG)(-1L);
+
+			status = STATUS_SUCCESS;
+		}
+	}
+	break;
+
+	case IOCTL_DISK_GET_DRIVE_GEOMETRY:
+	{
+		PDISK_GEOMETRY outputBuffer;
+		information = sizeof(DISK_GEOMETRY);
+		status = WdfRequestRetrieveOutputBuffer(Request, sizeof(DISK_GEOMETRY), &outputBuffer, &bufSize);
+		if (NT_SUCCESS(status))
+		{
+			RtlCopyMemory(outputBuffer, &(devExt->DiskGeometry), sizeof(DISK_GEOMETRY));
+			status = STATUS_SUCCESS;
+		}
+	}
+	break;
+
+	case IOCTL_DISK_CHECK_VERIFY:
+	case IOCTL_DISK_IS_WRITABLE:
+		status = STATUS_SUCCESS;
+	
+		break;
+
+	}
+
+	WdfRequestCompleteWithInformation(Request, status, information);
 }
