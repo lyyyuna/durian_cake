@@ -8,7 +8,7 @@ Class=Sample ; TODO: edit Class
 ClassGuid={78A1C341-4539-11d3-B88D-00C04FAD5171} ; TODO: edit ClassGuid
 Provider=%ManufacturerName%
 CatalogFile=LyyRamdisk.cat
-DriverVer=05/14/2015,17.9.29.703
+DriverVer=05/15/2015,10.4.49.694
 
 [DestinationDirs]
 DefaultDestDir = 12

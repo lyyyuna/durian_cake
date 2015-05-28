@@ -19,7 +19,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <Inf Include="LyyRamdisk.inf">
+    <Inf Include="ramdisk.inx">
       <Filter>Driver Files</Filter>
     </Inf>
   </ItemGroup>
