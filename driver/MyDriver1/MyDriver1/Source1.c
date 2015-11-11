@@ -9,7 +9,7 @@ NTSTATUS DriverEntry(PDRIVER_OBJECT driver, PUNICODE_STRING reg_path)
 {
 	_asm int 3
 
-	DbgPrint("first: hello, my salary!");
+	DbgPrint("first: hello, my salary! lalalalalalalalalalasdfsdfwefwe\n\r");
 
 	driver->DriverUnload = DriverUnload;
 	return STATUS_SUCCESS;
