@@ -49,3 +49,7 @@ $tf*/
 *.sys
 *.inf
 *.opensdf
+
+#driver
+*.tlog
+*.cer
