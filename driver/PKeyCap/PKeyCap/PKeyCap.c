@@ -1,4 +1,5 @@
 #include <wdm.h>
+#include <Ntddkbd.h>
 
 #define KBD_DRIVER_NAME		L"\\Driver\\Kbdclass"
 
@@ -121,6 +122,9 @@ NTSTATUS c2pReadComplete(IN PDEVICE_OBJECT DeviceObject, IN PIRP Irp, IN PVOID C
 	ULONG buf_len = 0;
 	ULONG i;
 
+	PKEYBOARD_INPUT_DATA KeyData;
+	ULONG numKeys;
+
 	UNREFERENCED_PARAMETER(DeviceObject);
 	UNREFERENCED_PARAMETER(Context);
 
@@ -134,10 +138,18 @@ NTSTATUS c2pReadComplete(IN PDEVICE_OBJECT DeviceObject, IN PIRP Irp, IN PVOID C
 		buf_len = Irp->IoStatus.Information;
 
 		// print
-		for (i = 0; i < buf_len; i++)
+		// for (i = 0; i < buf_len; i++)
+		// {
+		//		DbgPrint("capture key: %2x\r\n", buf[i]);
+		// }
+		KeyData = (PKEYBOARD_INPUT_DATA)Irp->AssociatedIrp.SystemBuffer;
+		numKeys = buf_len / sizeof(KEYBOARD_INPUT_DATA);
+
+		for (i = 0; i < numKeys; i++)
 		{
-			DbgPrint("capture key: %2x\r\n", buf[i]);
+			DbgPrint("numkeys: %d, scancode: %x. \r\n", numKeys, KeyData->MakeCode);
 		}
+
 	}
 
 	gc2pKeyCount--;
