@@ -189,5 +189,158 @@ VOID RamdiskQueryDiskRegParameters(IN PWSTR RegistryPath, IN PDISK_INFO DiskRegI
 
 NTSTATUS RamdiskFormatDisk(IN PDEVICE_EXTENSION pDeviceExtension)
 {
+	PBOOT_SECTOR bootSector = (PBOOT_SECTOR)pDeviceExtension->DiskImage;
+
+	ULONG rootDirEntries;
+	ULONG sectorsPerCluster;
+	USHORT fatEntries;
+	USHORT fatType;
+	USHORT fatSectorCnt;
+
+	PUCHAR firstFatSector;
+	PDIR_ENTRY rootDir;
+
+
+
+	PAGED_CODE();
+	ASSERT(sizeof(BOOT_SECTOR) == 512);
+	ASSERT(pDeviceExtension->DiskImage != NULL);
+
+	RtlZeroMemory(pDeviceExtension->DiskImage, pDeviceExtension->DiskRegInfo.DiskSize);
+
+	pDeviceExtension->DiskGeometry.BytesPerSector = 512;
+	pDeviceExtension->DiskGeometry.SectorsPerTrack = 32;
+	pDeviceExtension->DiskGeometry.TracksPerCylinder = 2;
+	// calculate number cylinders
+	pDeviceExtension->DiskGeometry.Cylinders.QuadPart = pDeviceExtension->DiskRegInfo.DiskSize
+		/ pDeviceExtension->DiskGeometry.BytesPerSector
+		/ pDeviceExtension->DiskGeometry.SectorsPerTrack
+		/ pDeviceExtension->DiskGeometry.TracksPerCylinder;
+
+	pDeviceExtension->DiskGeometry.MediaType = RAMDISK_MEDIA_TYPE;
+
+	KdPrint((
+		"Cylinders: %ld\n TracksPerCylinder: %ld\n SectorsPerTrack: %ld\n BytesPerSector: %ld\n",
+		pDeviceExtension->DiskGeometry.Cylinders.QuadPart, 
+		pDeviceExtension->DiskGeometry.TracksPerCylinder,
+		pDeviceExtension->DiskGeometry.SectorsPerTrack,
+		pDeviceExtension->DiskGeometry.BytesPerSector
+		));
+
+	rootDirEntries = pDeviceExtension->DiskRegInfo.RootDirEntries;
+	sectorsPerCluster = pDeviceExtension->DiskRegInfo.SectorsPerCluster;
+
+	// 32 bytes for a directory entry
+	// 512 / 32 = 16
+	if (rootDirEntries & (DIR_ENTRIES_PER_SECTOR - 1))
+	{
+		rootDirEntries = (rootDirEntries + (DIR_ENTRIES_PER_SECTOR - 1)) & ~(DIR_ENTRIES_PER_SECTOR - 1);
+	}
+
+	KdPrint(("root dir entries: %ld\n sectors/cluster: %ld\n", rootDirEntries, sectorsPerCluster));
+
+	// jmp
+	bootSector->bsJump[0] = 0xeb;
+	bootSector->bsJump[1] = 0x3c;
+	bootSector->bsJump[2] = 0x90;
+	// set oem name
+	bootSector->bsOemName[0] = 'R';
+	bootSector->bsOemName[1] = 'a';
+	bootSector->bsOemName[2] = 'j';
+	bootSector->bsOemName[3] = 'u';
+	bootSector->bsOemName[4] = 'R';
+	bootSector->bsOemName[5] = 'a';
+	bootSector->bsOemName[6] = 'm';
+	bootSector->bsOemName[7] = ' ';
+
+	bootSector->bsBytesPerSec = (SHORT)pDeviceExtension->DiskGeometry.BytesPerSector;
+	bootSector->bsResSectors = 1;
+	// save 1, e, usually 2
+	bootSector->bsFATs = 1;
+	bootSector->bsRootDirEnts = (USHORT)rootDirEntries;
+	// total sectors
+	bootSector->bsSectors = (USHORT)(pDeviceExtension->DiskRegInfo.DiskSize / pDeviceExtension->DiskGeometry.BytesPerSector);
+	bootSector->bsMedia = (UCHAR)pDeviceExtension->DiskGeometry.MediaType;
+	// 
+	bootSector->bsSecPerClus = (UCHAR)sectorsPerCluster;
+	// num of fat entries
+	fatEntries = (bootSector->bsSectors - bootSector->bsResSectors - bootSector->bsRootDirEnts / DIR_ENTRIES_PER_SECTOR) / bootSector->bsSecPerClus + 2;
+
+	if (fatEntries > 4087)
+	{
+		fatType = 16;
+		fatSectorCnt = (fatEntries * 2 + 511) / 512;
+		fatEntries = fatEntries + fatSectorCnt;
+		fatSectorCnt = (fatEntries * 2 + 511) / 512;
+	}
+	else
+	{
+		fatType = 12;
+		fatSectorCnt = (((fatEntries * 3 + 1) / 2) + 511) / 512;
+		fatEntries = fatEntries + fatSectorCnt;
+		fatSectorCnt = (((fatEntries * 3 + 1) / 2) + 511) / 512;
+	}
+
+	bootSector->bsFATsecs = fatSectorCnt;
+	bootSector->bsSecPerTrack = (USHORT)pDeviceExtension->DiskGeometry.SectorsPerTrack;
+	bootSector->bsHeads = (USHORT)pDeviceExtension->DiskGeometry.TracksPerCylinder;
+	bootSector->bsBootSignature = 0x29;
+	bootSector->bsVolumeID = 0x12345678;
+
+	// set label to "ramdisk "
+	bootSector->bsLabel[0] = 'R';
+	bootSector->bsLabel[1] = 'a';
+	bootSector->bsLabel[2] = 'm';
+	bootSector->bsLabel[3] = 'D';
+	bootSector->bsLabel[4] = 'i';
+	bootSector->bsLabel[5] = 's';
+	bootSector->bsLabel[6] = 'k';
+	bootSector->bsLabel[7] = ' ';
+	bootSector->bsLabel[8] = ' ';
+	bootSector->bsLabel[9] = ' ';
+	bootSector->bsLabel[10] = ' ';
+
+	// set filesystemtype to fat1?
+	bootSector->bsFileSystemType[0] = 'F';
+	bootSector->bsFileSystemType[1] = 'A';
+	bootSector->bsFileSystemType[2] = 'T';
+	bootSector->bsFileSystemType[3] = '1';
+	bootSector->bsFileSystemType[4] = '?';
+	bootSector->bsFileSystemType[5] = ' ';
+	bootSector->bsFileSystemType[6] = ' ';
+	bootSector->bsFileSystemType[7] = ' ';
+
+	bootSector->bsFileSystemType[4] = (fatType == 16) ? '6' : '2';
+
+	bootSector->bsSig2[0] = 0x55;
+	bootSector->bsSig2[1] = 0xAA;
+
+
+	// locate the first fat entry,
+	// it just follows the DBR sector
+	firstFatSector = (PUCHAR)(bootSector + 1);
+	firstFatSector[0] = (UCHAR)pDeviceExtension->DiskGeometry.MediaType;
+	firstFatSector[1] = 0xFF;
+	firstFatSector[2] = 0xFF;
+
+	// root directory
+	rootDir = (PDIR_ENTRY)(bootSector + 1 + fatSectorCnt);
+	// set device name
+	rootDir->deName[0] = 'M';
+	rootDir->deName[1] = 'S';
+	rootDir->deName[2] = '-';
+	rootDir->deName[3] = 'R';
+	rootDir->deName[4] = 'A';
+	rootDir->deName[5] = 'M';
+	rootDir->deName[6] = 'D';
+	rootDir->deName[7] = 'R';
+
+	rootDir->deExtension[0] = 'I';
+	rootDir->deExtension[1] = 'V';
+	rootDir->deExtension[2] = 'E';
+
+	rootDir->deAttributes = DIR_ATTR_VOLUME;
+
+	return STATUS_SUCCESS;
 
 }
