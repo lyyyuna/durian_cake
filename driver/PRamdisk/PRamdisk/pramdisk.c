@@ -332,6 +332,7 @@ NTSTATUS RamdiskFormatDisk(IN PDEVICE_EXTENSION pDeviceExtension)
 	rootDir->deName[3] = 'R';
 	rootDir->deName[4] = 'A';
 	rootDir->deName[5] = 'M';
+
 	rootDir->deName[6] = 'D';
 	rootDir->deName[7] = 'R';
 
@@ -343,4 +344,53 @@ NTSTATUS RamdiskFormatDisk(IN PDEVICE_EXTENSION pDeviceExtension)
 
 	return STATUS_SUCCESS;
 
+}
+
+
+BOOLEAN RamdiskCheckParameters(IN PDEVICE_EXTENSION devExt, IN LARGE_INTEGER ByteOffset, IN size_t Length)
+{
+	if (devExt->DiskRegInfo.DiskSize < Length ||
+		ByteOffset.QuadPart < 0 || // QuadPart is signed so check for negative values
+		((ULONGLONG)ByteOffset.QuadPart >(devExt->DiskRegInfo.DiskSize - Length)) ||
+		(Length & (devExt->DiskGeometry.BytesPerSector - 1)))
+	{
+		KdPrint(("Error invalid parameter\n"
+			"ByteOffset: %x\n"
+			"Length: %d\n",
+			ByteOffset, Length
+			));
+
+		return FALSE;
+	}
+
+	return TRUE;
+
+}
+
+VOID RamdiskEvtIoRead(IN WDFQUEUE Queue, IN WDFREQUEST Request, IN size_t Length)
+{
+	PDEVICE_EXTENSION devExt = QueueGetExtension(Queue)->DeviceExtension;
+
+	WDF_REQUEST_PARAMETERS Parameters;
+	LARGE_INTEGER ByteOffset;
+
+	NTSTATUS status;
+	WDFMEMORY hMemory;
+
+	WDF_REQUEST_PARAMETERS_INIT(&Parameters);
+	WdfRequestGetParameters(Request, &Parameters);
+
+	ByteOffset.QuadPart = Parameters.Parameters.Read.DeviceOffset;
+	// check parameters
+	if (RamdiskCheckParameters(devExt, ByteOffset, Length))
+	{
+		status = WdfRequestRetrieveOutputMemory(Request, &hMemory);
+		if (NT_SUCCESS(status))
+		{
+			status = WdfMemoryCopyFromBuffer(hMemory, 0, devExt->DiskImage + ByteOffset.LowPart, Length);
+
+		}
+	}
+
+	WdfRequestCompleteWithInformation(Request, status, (ULONG_PTR)Length);
 }

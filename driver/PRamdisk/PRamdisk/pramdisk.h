@@ -130,5 +130,6 @@ VOID RamdiskQueryDiskRegParameters(IN PWSTR RegistryPath, IN PDISK_INFO DiskRegI
 
 NTSTATUS RamdiskFormatDisk(IN PDEVICE_EXTENSION deviceExtension);
 
+BOOLEAN RamdiskCheckParameters(IN PDEVICE_EXTENSION devExt, IN LARGE_INTEGER ByteOffset, IN size_t Length);
 
 #endif
