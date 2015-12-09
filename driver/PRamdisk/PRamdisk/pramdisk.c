@@ -367,6 +367,20 @@ BOOLEAN RamdiskCheckParameters(IN PDEVICE_EXTENSION devExt, IN LARGE_INTEGER Byt
 
 }
 
+
+VOID RamdiskEvtDeviceContextCleanup(IN WDFDEVICE Device)
+{
+	PDEVICE_EXTENSION pdvtExt = DeviceGetExtension(Device);
+
+	PAGED_CODE();
+
+	if (pdvtExt->DiskImage)
+	{
+		ExFreePool(pdvtExt->DiskImage);
+	}
+}
+
+
 VOID RamdiskEvtIoRead(IN WDFQUEUE Queue, IN WDFREQUEST Request, IN size_t Length)
 {
 	PDEVICE_EXTENSION devExt = QueueGetExtension(Queue)->DeviceExtension;
@@ -393,4 +407,93 @@ VOID RamdiskEvtIoRead(IN WDFQUEUE Queue, IN WDFREQUEST Request, IN size_t Length
 	}
 
 	WdfRequestCompleteWithInformation(Request, status, (ULONG_PTR)Length);
+}
+
+VOID RamdiskEvtIoWrite(IN WDFQUEUE Queue, IN WDFREQUEST Request, IN size_t Length)
+{
+	PDEVICE_EXTENSION devExt = QueueGetExtension(Queue)->DeviceExtension;
+	WDF_REQUEST_PARAMETERS Parameters;
+	LARGE_INTEGER ByteOffset;
+
+	NTSTATUS status = STATUS_INVALID_PARAMETER;
+	WDFMEMORY hMemory;
+
+	WDF_REQUEST_PARAMETERS_INIT(&Parameters);
+	WdfRequestGetParameters(Request, &Parameters);
+	ByteOffset.QuadPart = Parameters.Parameters.Write.DeviceOffset;
+
+	if (RamdiskCheckParameters(devExt, ByteOffset, Length))
+	{
+		status = WdfRequestRetrieveInputMemory(Request, &hMemory);
+		if (NT_SUCCESS(status))
+		{
+			status = WdfMemoryCopyToBuffer(hMemory, 0, devExt->DiskImage + ByteOffset.LowPart, Length);
+		}
+	}
+
+
+	WdfRequestCompleteWithInformation(Request, status, (ULONG_PTR)Length);
+}
+
+
+
+VOID RamdiskEvtIoDeviceControl(IN WDFQUEUE Queue, IN WDFREQUEST Request, IN size_t OutputBufferLength, IN size_t InputBufferLength, IN ULONG IoControlCode)
+{
+
+	PDEVICE_EXTENSION devExt = QueueGetExtension(Queue)->DeviceExtension;
+
+	NTSTATUS status;
+	size_t bufSize;
+
+	ULONG_PTR information = 0;
+
+
+	switch (IoControlCode)
+	{
+	case IOCTL_DISK_GET_PARTITION_INFO:
+	{
+		PPARTITION_INFORMATION outputBuffer;
+		PBOOT_SECTOR bootSector = (PBOOT_SECTOR)devExt->DiskImage;
+
+		information = sizeof(PARTITION_INFORMATION);
+
+		status = WdfRequestRetrieveOutputBuffer(Request, sizeof(PARTITION_INFORMATION), &outputBuffer, &bufSize);
+		if (NT_SUCCESS(status))
+		{
+			outputBuffer->PartitionType = (bootSector->bsFileSystemType[4] == '6') ? PARTITION_FAT_16 : PARTITION_FAT_12;
+			outputBuffer->BootIndicator = FALSE;
+			outputBuffer->RewritePartition = TRUE;
+			outputBuffer->StartingOffset.QuadPart = 0;
+			outputBuffer->PartitionLength.QuadPart = devExt->DiskRegInfo.DiskSize;
+			outputBuffer->HiddenSectors = (ULONG)(1L);
+			outputBuffer->PartitionNumber = (ULONG)(-1L);
+
+			status = STATUS_SUCCESS;
+		}
+	}
+	break;
+
+	case IOCTL_DISK_GET_DRIVE_GEOMETRY:
+	{
+		PDISK_GEOMETRY outputBuffer;
+
+		information = sizeof(PARTITION_INFORMATION);
+
+		status = WdfRequestRetrieveOutputBuffer(Request, sizeof(DISK_GEOMETRY), &outputBuffer, &bufSize);
+		if (NT_SUCCESS(status))
+		{
+			RtlCopyMemory(outputBuffer, &(devExt->DiskGeometry), sizeof(DISK_GEOMETRY));
+			status = STATUS_SUCCESS;
+		}
+		
+	}
+	break;
+
+
+	default:
+		status = STATUS_SUCCESS;
+		break;
+	}
+
+	WdfRequestCompleteWithInformation(Request, status, information);
 }
