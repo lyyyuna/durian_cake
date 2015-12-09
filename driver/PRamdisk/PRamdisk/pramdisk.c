@@ -6,7 +6,10 @@
 
 // allocate func into different location
 #pragma	alloc_text(INIT, DriverEntry)
-#pragma alloc_text(PAGE, RamdiskEvtDeviceAdd);
+#pragma alloc_text(PAGE, RamdiskEvtDeviceAdd)
+#pragma alloc_text(PAGE, RamdiskEvtDeviceContextCleanup)
+#pragma alloc_text(PAGE, RamdiskQueryDiskRegParameters)
+#pragma alloc_text(PAGE, RamdiskFormatDisk)
 
 
 
@@ -25,7 +28,7 @@ NTSTATUS DriverEntry(IN PDRIVER_OBJECT DriverObject, IN PUNICODE_STRING Registry
 
 }
 
-NTSTATUS RamdiskEvtDeviceAdd(IN WDFDRIVER Drvier, IN PWDFDEVICE_INIT DeviceInit)
+NTSTATUS RamdiskEvtDeviceAdd(IN WDFDRIVER Driver, IN PWDFDEVICE_INIT DeviceInit)
 {
 	NTSTATUS status;
 	WDF_OBJECT_ATTRIBUTES deviceAttributes;
@@ -42,6 +45,9 @@ NTSTATUS RamdiskEvtDeviceAdd(IN WDFDRIVER Drvier, IN PWDFDEVICE_INIT DeviceInit)
 	DECLARE_CONST_UNICODE_STRING(ntDeviceName, NT_DEVICE_NAME);
 
 	PAGED_CODE();
+
+	UNREFERENCED_PARAMETER(Driver);
+
 
 	status = WdfDeviceInitAssignName(DeviceInit, &ntDeviceName);
 	if (!NT_SUCCESS(status))
@@ -388,7 +394,7 @@ VOID RamdiskEvtIoRead(IN WDFQUEUE Queue, IN WDFREQUEST Request, IN size_t Length
 	WDF_REQUEST_PARAMETERS Parameters;
 	LARGE_INTEGER ByteOffset;
 
-	NTSTATUS status;
+	NTSTATUS status = STATUS_INVALID_PARAMETER;
 	WDFMEMORY hMemory;
 
 	WDF_REQUEST_PARAMETERS_INIT(&Parameters);
@@ -447,6 +453,9 @@ VOID RamdiskEvtIoDeviceControl(IN WDFQUEUE Queue, IN WDFREQUEST Request, IN size
 
 	ULONG_PTR information = 0;
 
+
+	UNREFERENCED_PARAMETER(InputBufferLength);
+	UNREFERENCED_PARAMETER(OutputBufferLength);
 
 	switch (IoControlCode)
 	{
