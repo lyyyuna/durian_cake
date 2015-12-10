@@ -19,7 +19,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <Inf Include="PRamdisk.inf">
+    <Inf Include="ramdisk.inx">
       <Filter>Driver Files</Filter>
     </Inf>
   </ItemGroup>
