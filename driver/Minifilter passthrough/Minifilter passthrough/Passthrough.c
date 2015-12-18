@@ -4,6 +4,9 @@
 
 PFLT_FILTER gFilterHandle;
 
+#pragma alloc_text(INIT, DriverEntry)
+
+
 NTSTATUS DriverEntry(_In_ PDRIVER_OBJECT DriverObject, _In_ PUNICODE_STRING RegistryPath)
 {
 	NTSTATUS status;
