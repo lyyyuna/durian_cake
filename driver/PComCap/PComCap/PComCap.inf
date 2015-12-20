@@ -1,0 +1,91 @@
+;
+; PComCap.inf
+;
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=Sample ; TODO: edit Class
+ClassGuid={78A1C341-4539-11d3-B88D-00C04FAD5171} ; TODO: edit ClassGuid
+Provider=%ManufacturerName%
+CatalogFile=PComCap.cat
+DriverVer= ; TODO: set DriverVer in stampinf property pages
+
+[DestinationDirs]
+DefaultDestDir = 12
+
+; ================= Class section =====================
+
+[ClassInstall32]
+Addreg=SampleClassReg
+
+[SampleClassReg]
+HKR,,,0,%ClassName%
+HKR,,Icon,,-5
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[SourceDisksFiles]
+PComCap.sys  = 1,,
+
+;*****************************************
+; Install Section
+;*****************************************
+
+[Manufacturer]
+%ManufacturerName%=Standard,NT$ARCH$
+
+[Standard.NT$ARCH$]
+%PComCap.DeviceDesc%=PComCap_Device, Root\PComCap ; TODO: edit hw-id
+
+[PComCap_Device.NT]
+CopyFiles=Drivers_Dir
+
+[Drivers_Dir]
+PComCap.sys
+
+;-------------- Service installation
+[PComCap_Device.NT.Services]
+AddService = PComCap,%SPSVCINST_ASSOCSERVICE%, PComCap_Service_Inst
+
+; -------------- PComCap driver install sections
+[PComCap_Service_Inst]
+DisplayName    = %PComCap.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\PComCap.sys
+LoadOrderGroup = Extended Base
+
+;
+;--- PComCap_Device Coinstaller installation ------
+;
+
+[DestinationDirs]
+PComCap_Device_CoInstaller_CopyFiles = 11
+
+[PComCap_Device.NT.CoInstallers]
+AddReg=PComCap_Device_CoInstaller_AddReg
+CopyFiles=PComCap_Device_CoInstaller_CopyFiles
+
+[PComCap_Device_CoInstaller_AddReg]
+HKR,,CoInstallers32,0x00010000, "WdfCoInstaller$KMDFCOINSTALLERVERSION$.dll,WdfCoInstaller"
+
+[PComCap_Device_CoInstaller_CopyFiles]
+WdfCoInstaller$KMDFCOINSTALLERVERSION$.dll
+
+[SourceDisksFiles]
+WdfCoInstaller$KMDFCOINSTALLERVERSION$.dll=1 ; make sure the number matches with SourceDisksNames
+
+[PComCap_Device.NT.Wdf]
+KmdfService =  PComCap, PComCap_wdfsect
+[PComCap_wdfsect]
+KmdfLibraryVersion = $KMDFVERSION$
+
+[Strings]
+SPSVCINST_ASSOCSERVICE= 0x00000002
+ManufacturerName="" ; TODO: add ManufacturerName
+ClassName="Samples" ; TODO: edit ClassName
+DiskName = "PComCap Installation Disk"
+PComCap.DeviceDesc = "PComCap Device"
+PComCap.SVCDESC = "PComCap Service"

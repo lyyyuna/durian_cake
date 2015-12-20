@@ -1,0 +1,91 @@
+;
+; PKeyCap.inf
+;
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=Sample ; TODO: edit Class
+ClassGuid={78A1C341-4539-11d3-B88D-00C04FAD5171} ; TODO: edit ClassGuid
+Provider=%ManufacturerName%
+CatalogFile=PKeyCap.cat
+DriverVer=11/22/2015,15.13.1.171
+
+[DestinationDirs]
+DefaultDestDir = 12
+
+; ================= Class section =====================
+
+[ClassInstall32]
+Addreg=SampleClassReg
+
+[SampleClassReg]
+HKR,,,0,%ClassName%
+HKR,,Icon,,-5
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[SourceDisksFiles]
+PKeyCap.sys  = 1,,
+
+;*****************************************
+; Install Section
+;*****************************************
+
+[Manufacturer]
+%ManufacturerName%=Standard,NTx86
+
+[Standard.NTx86]
+%PKeyCap.DeviceDesc%=PKeyCap_Device, Root\PKeyCap ; TODO: edit hw-id
+
+[PKeyCap_Device.NT]
+CopyFiles=Drivers_Dir
+
+[Drivers_Dir]
+PKeyCap.sys
+
+;-------------- Service installation
+[PKeyCap_Device.NT.Services]
+AddService = PKeyCap,%SPSVCINST_ASSOCSERVICE%, PKeyCap_Service_Inst
+
+; -------------- PKeyCap driver install sections
+[PKeyCap_Service_Inst]
+DisplayName    = %PKeyCap.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\PKeyCap.sys
+LoadOrderGroup = Extended Base
+
+;
+;--- PKeyCap_Device Coinstaller installation ------
+;
+
+[DestinationDirs]
+PKeyCap_Device_CoInstaller_CopyFiles = 11
+
+[PKeyCap_Device.NT.CoInstallers]
+AddReg=PKeyCap_Device_CoInstaller_AddReg
+CopyFiles=PKeyCap_Device_CoInstaller_CopyFiles
+
+[PKeyCap_Device_CoInstaller_AddReg]
+HKR,,CoInstallers32,0x00010000, "WdfCoInstaller01011.dll,WdfCoInstaller"
+
+[PKeyCap_Device_CoInstaller_CopyFiles]
+WdfCoInstaller01011.dll
+
+[SourceDisksFiles]
+WdfCoInstaller01011.dll=1 ; make sure the number matches with SourceDisksNames
+
+[PKeyCap_Device.NT.Wdf]
+KmdfService =  PKeyCap, PKeyCap_wdfsect
+[PKeyCap_wdfsect]
+KmdfLibraryVersion = 1.11
+
+[Strings]
+SPSVCINST_ASSOCSERVICE= 0x00000002
+ManufacturerName="" ; TODO: add ManufacturerName
+ClassName="Samples" ; TODO: edit ClassName
+DiskName = "PKeyCap Installation Disk"
+PKeyCap.DeviceDesc = "PKeyCap Device"
+PKeyCap.SVCDESC = "PKeyCap Service"

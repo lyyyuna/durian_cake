@@ -241,9 +241,14 @@ NTSTATUS DriverEntry(_In_ PDRIVER_OBJECT DriverObject, _In_ PUNICODE_STRING Regi
 
 	FLT_ASSERT(NT_SUCCESS(status));
 
-	if (!NT_SUCCESS(status))
+	if (NT_SUCCESS(status))
 	{
-		FltUnregisterFilter(gFilterHandle);
+		status = FltStartFiltering(gFilterHandle);
+		if (!NT_SUCCESS(status))
+		{
+			FltUnregisterFilter(gFilterHandle);
+		}
+		KdPrint(("Passthrough!DriverEntry: start mini filter \n"));
 	}
 
 	return status;

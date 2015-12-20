@@ -1,0 +1,91 @@
+;
+; PRamdisk.inf
+;
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=Sample ; TODO: edit Class
+ClassGuid={78A1C341-4539-11d3-B88D-00C04FAD5171} ; TODO: edit ClassGuid
+Provider=%ManufacturerName%
+CatalogFile=PRamdisk.cat
+DriverVer= ; TODO: set DriverVer in stampinf property pages
+
+[DestinationDirs]
+DefaultDestDir = 12
+
+; ================= Class section =====================
+
+[ClassInstall32]
+Addreg=SampleClassReg
+
+[SampleClassReg]
+HKR,,,0,%ClassName%
+HKR,,Icon,,-5
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[SourceDisksFiles]
+PRamdisk.sys  = 1,,
+
+;*****************************************
+; Install Section
+;*****************************************
+
+[Manufacturer]
+%ManufacturerName%=Standard,NT$ARCH$
+
+[Standard.NT$ARCH$]
+%PRamdisk.DeviceDesc%=PRamdisk_Device, Root\PRamdisk ; TODO: edit hw-id
+
+[PRamdisk_Device.NT]
+CopyFiles=Drivers_Dir
+
+[Drivers_Dir]
+PRamdisk.sys
+
+;-------------- Service installation
+[PRamdisk_Device.NT.Services]
+AddService = PRamdisk,%SPSVCINST_ASSOCSERVICE%, PRamdisk_Service_Inst
+
+; -------------- PRamdisk driver install sections
+[PRamdisk_Service_Inst]
+DisplayName    = %PRamdisk.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\PRamdisk.sys
+LoadOrderGroup = Extended Base
+
+;
+;--- PRamdisk_Device Coinstaller installation ------
+;
+
+[DestinationDirs]
+PRamdisk_Device_CoInstaller_CopyFiles = 11
+
+[PRamdisk_Device.NT.CoInstallers]
+AddReg=PRamdisk_Device_CoInstaller_AddReg
+CopyFiles=PRamdisk_Device_CoInstaller_CopyFiles
+
+[PRamdisk_Device_CoInstaller_AddReg]
+HKR,,CoInstallers32,0x00010000, "WdfCoInstaller$KMDFCOINSTALLERVERSION$.dll,WdfCoInstaller"
+
+[PRamdisk_Device_CoInstaller_CopyFiles]
+WdfCoInstaller$KMDFCOINSTALLERVERSION$.dll
+
+[SourceDisksFiles]
+WdfCoInstaller$KMDFCOINSTALLERVERSION$.dll=1 ; make sure the number matches with SourceDisksNames
+
+[PRamdisk_Device.NT.Wdf]
+KmdfService =  PRamdisk, PRamdisk_wdfsect
+[PRamdisk_wdfsect]
+KmdfLibraryVersion = $KMDFVERSION$
+
+[Strings]
+SPSVCINST_ASSOCSERVICE= 0x00000002
+ManufacturerName="" ; TODO: add ManufacturerName
+ClassName="Samples" ; TODO: edit ClassName
+DiskName = "PRamdisk Installation Disk"
+PRamdisk.DeviceDesc = "PRamdisk Device"
+PRamdisk.SVCDESC = "PRamdisk Service"
