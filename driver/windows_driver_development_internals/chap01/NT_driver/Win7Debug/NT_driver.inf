@@ -1,0 +1,91 @@
+;
+; NT_driver.inf
+;
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=Sample ; TODO: edit Class
+ClassGuid={78A1C341-4539-11d3-B88D-00C04FAD5171} ; TODO: edit ClassGuid
+Provider=%ManufacturerName%
+CatalogFile=NT_driver.cat
+DriverVer=01/07/2016,22.31.44.679
+
+[DestinationDirs]
+DefaultDestDir = 12
+
+; ================= Class section =====================
+
+[ClassInstall32]
+Addreg=SampleClassReg
+
+[SampleClassReg]
+HKR,,,0,%ClassName%
+HKR,,Icon,,-5
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[SourceDisksFiles]
+NT_driver.sys  = 1,,
+
+;*****************************************
+; Install Section
+;*****************************************
+
+[Manufacturer]
+%ManufacturerName%=Standard,NTx86
+
+[Standard.NTx86]
+%NT_driver.DeviceDesc%=NT_driver_Device, Root\NT_driver ; TODO: edit hw-id
+
+[NT_driver_Device.NT]
+CopyFiles=Drivers_Dir
+
+[Drivers_Dir]
+NT_driver.sys
+
+;-------------- Service installation
+[NT_driver_Device.NT.Services]
+AddService = NT_driver,%SPSVCINST_ASSOCSERVICE%, NT_driver_Service_Inst
+
+; -------------- NT_driver driver install sections
+[NT_driver_Service_Inst]
+DisplayName    = %NT_driver.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\NT_driver.sys
+LoadOrderGroup = Extended Base
+
+;
+;--- NT_driver_Device Coinstaller installation ------
+;
+
+[DestinationDirs]
+NT_driver_Device_CoInstaller_CopyFiles = 11
+
+[NT_driver_Device.NT.CoInstallers]
+AddReg=NT_driver_Device_CoInstaller_AddReg
+CopyFiles=NT_driver_Device_CoInstaller_CopyFiles
+
+[NT_driver_Device_CoInstaller_AddReg]
+HKR,,CoInstallers32,0x00010000, "WdfCoInstaller01011.dll,WdfCoInstaller"
+
+[NT_driver_Device_CoInstaller_CopyFiles]
+WdfCoInstaller01011.dll
+
+[SourceDisksFiles]
+WdfCoInstaller01011.dll=1 ; make sure the number matches with SourceDisksNames
+
+[NT_driver_Device.NT.Wdf]
+KmdfService =  NT_driver, NT_driver_wdfsect
+[NT_driver_wdfsect]
+KmdfLibraryVersion = 1.11
+
+[Strings]
+SPSVCINST_ASSOCSERVICE= 0x00000002
+ManufacturerName="" ; TODO: add ManufacturerName
+ClassName="Samples" ; TODO: edit ClassName
+DiskName = "NT_driver Installation Disk"
+NT_driver.DeviceDesc = "NT_driver Device"
+NT_driver.SVCDESC = "NT_driver Service"
