@@ -38,7 +38,7 @@ NTSTATUS HelloWDMDispatchRoutine(
 	IN PIRP pIrp
 	);
 
-NTSTATUS HelloWDMUnload(
+VOID HelloWDMUnload(
 	IN PDRIVER_OBJECT pDriverObject
 	);
 
@@ -46,7 +46,7 @@ NTSTATUS HelloWDMUnload(
 #pragma alloc_text(PAGE, HelloWDMAddDevice)
 #pragma alloc_text(PAGE, HelloWDMPnp)
 #pragma alloc_text(PAGE, DefaultPnpHandler)
-#pragma alloc_text(PAGE, HandleRemoveRevice)
+#pragma alloc_text(PAGE, HandleRemoveDevice)
 #pragma alloc_text(PAGE, HelloWDMDispatchRoutine)
 #pragma alloc_text(PAGE, HelloWDMUnload)
 
@@ -56,6 +56,8 @@ NTSTATUS DriverEntry(
 	)
 {
 	KdPrint(("Enter DriverEntry! \n"));
+
+	UNREFERENCED_PARAMETER(pRegistryPath);
 
 	pDriverObject->DriverExtension->AddDevice = HelloWDMAddDevice;
 	pDriverObject->MajorFunction[IRP_MJ_PNP] = HelloWDMPnp;
@@ -72,10 +74,12 @@ NTSTATUS DriverEntry(
 
 }
 
-NTSTATUS HelloWDMUnload(
+VOID HelloWDMUnload(
 	IN PDRIVER_OBJECT pDriverObject
 	)
 {
+	UNREFERENCED_PARAMETER(pDriverObject);
+
 	PAGED_CODE();
 	KdPrint(("Enter HelloWDMUnload \n"));
 	KdPrint(("Leave HelloWDMUnload \n"));
@@ -89,7 +93,10 @@ NTSTATUS HelloWDMDispatchRoutine(
 	PAGED_CODE();
 	KdPrint(("Enter HelloWDMDispatchRoutine \n"));
 
+	UNREFERENCED_PARAMETER(pDeviceObject);
+
 	pIrp->IoStatus.Status = STATUS_SUCCESS;
+	// This is set to a request-dependent value. For example, on successful completion of a transfer request, this is set to the number of bytes transferred. If a transfer request is completed with another STATUS_XXX, this member is set to zero.
 	pIrp->IoStatus.Information = 0; // no bytes xfered
 	IoCompleteRequest(pIrp, IO_NO_INCREMENT);
 
@@ -138,7 +145,7 @@ NTSTATUS HelloWDMAddDevice(
 	status = IoCreateSymbolicLink(&symLinkName, &devName);
 	if (!NT_SUCCESS(status))
 	{
-		IoDeleteSymbolicLink(&pDevExt->ustrSymlinkName);
+		IoDeleteSymbolicLink(pDevExt->ustrSymlinkName);
 		status = IoCreateSymbolicLink(&symLinkName, &devName);
 		if (!NT_SUCCESS(status))
 		{
