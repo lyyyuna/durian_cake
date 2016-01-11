@@ -1,0 +1,32 @@
+;
+; DriverStructrue.inf
+;
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=
+ClassGuid=
+Provider=
+DriverVer=01/11/2016,23.28.51.731
+CatalogFile=
+
+[DestinationDirs]
+DefaultDestDir = 12
+
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[SourceDisksFiles]
+
+
+[Manufacturer]
+%ManufacturerName%=Standard,NTx86
+
+[Standard.NTx86]
+
+
+[Strings]
+ManufacturerName=""
+ClassName=""
+DiskName="DriverStructrue Source Disk"
