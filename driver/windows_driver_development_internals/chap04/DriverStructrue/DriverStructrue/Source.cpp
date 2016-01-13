@@ -100,7 +100,7 @@ NTSTATUS HelloDDKDispatchRoutine(
 	return status;
 }
 
-#pragma INITCODE
+#pragma PAGEDCODE
 NTSTATUS CreateDevice(
 	IN PDRIVER_OBJECT pDriverObject
 	)
@@ -108,7 +108,7 @@ NTSTATUS CreateDevice(
 	NTSTATUS status;
 	PDEVICE_OBJECT pDevObj;
 	UNICODE_STRING devName;
-	RtlInitUnicodeString(&devName, L"\\Device\\MyDDKDevice11");
+	RtlInitUnicodeString(&devName, L"\\Device\\MyDDKDevice11111");
 	status = IoCreateDevice(pDriverObject,
 		sizeof(DEVICE_EXTENSION),
 		&devName,
@@ -121,6 +121,8 @@ NTSTATUS CreateDevice(
 		return status;
 	}
 
+	//__asm int 3
+
 	PDEVICE_EXTENSION pDevExt;
 	pDevObj->Flags |= DO_BUFFERED_IO;
 	pDevExt = (PDEVICE_EXTENSION)pDevObj->DeviceExtension;
@@ -128,7 +130,7 @@ NTSTATUS CreateDevice(
 	pDevExt->ustrDeviceName = devName;
 	// create symlink
 	UNICODE_STRING symlinkName;
-	RtlInitUnicodeString(&symlinkName, L"\\??\\HelloDDK11");
+	RtlInitUnicodeString(&symlinkName, L"\\??\\HelloDDK11111");
 	pDevExt->ustrSymLinkName = symlinkName;
 	status = IoCreateSymbolicLink(&symlinkName, &devName);
 	if (!NT_SUCCESS(status))
@@ -141,13 +143,13 @@ NTSTATUS CreateDevice(
 }
 
 
-#pragma INITCODE
+#pragma PAGEDCODE
 NTSTATUS CreateDevice2(
 	IN PDRIVER_OBJECT pDriverObject
 	)
 {
 	UNICODE_STRING devName;
-	RtlInitUnicodeString(&devName, L"\\Device\\MyDDKDevice22");
+	RtlInitUnicodeString(&devName, L"\\Device\\MyDDKDevice22222");
 	
 	NTSTATUS status;
 	PDEVICE_OBJECT pDevObj;
@@ -163,6 +165,8 @@ NTSTATUS CreateDevice2(
 		return status;
 	}
 
+	//__asm int 3
+
 	PDEVICE_EXTENSION pDevExt;
 	pDevObj->Flags |= DO_BUFFERED_IO;
 	pDevExt = (PDEVICE_EXTENSION)pDevObj->DeviceExtension;
@@ -170,7 +174,7 @@ NTSTATUS CreateDevice2(
 	pDevExt->ustrDeviceName = devName;
 	// create symlink
 	UNICODE_STRING symlinkName;
-	RtlInitUnicodeString(&symlinkName, L"\\??\\HelloDDK22");
+	RtlInitUnicodeString(&symlinkName, L"\\??\\HelloDDK22222");
 	pDevExt->ustrSymLinkName = symlinkName;
 	status = IoCreateSymbolicLink(&symlinkName, &devName);
 	if (!NT_SUCCESS(status))
