@@ -1,0 +1,32 @@
+;
+; RtlTest.inf
+;
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=
+ClassGuid=
+Provider=
+DriverVer=01/18/2016,22.10.2.691
+CatalogFile=
+
+[DestinationDirs]
+DefaultDestDir = 12
+
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[SourceDisksFiles]
+
+
+[Manufacturer]
+%ManufacturerName%=Standard,NTx86
+
+[Standard.NTx86]
+
+
+[Strings]
+ManufacturerName=""
+ClassName=""
+DiskName="RtlTest Source Disk"
