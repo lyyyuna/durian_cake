@@ -249,5 +249,5 @@ NTSTATUS HelloDDKRead(
 
 	KdPrint(("leave hello ddk read\n"));
 
-	return STATUS_SUCCESS;
+	return STATUS_PENDING;
 }
