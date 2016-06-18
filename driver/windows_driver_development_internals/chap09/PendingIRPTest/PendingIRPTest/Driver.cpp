@@ -207,6 +207,8 @@ NTSTATUS HelloDDKCleanUp(
 	PMY_IRP_ENTRY my_irp_entry;
 	while (!IsListEmpty(pDevExt->pIRPLinkListHead))
 	{
+		KdPrint(("finish one irp\n"));
+
 		PLIST_ENTRY pEntry = RemoveHeadList(pDevExt->pIRPLinkListHead);
 
 		my_irp_entry = CONTAINING_RECORD(pEntry, MY_IRP_ENTRY, ListEntry);
