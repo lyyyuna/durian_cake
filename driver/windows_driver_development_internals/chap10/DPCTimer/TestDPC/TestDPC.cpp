@@ -1,13 +1,11 @@
-// Test_iotimer.cpp : Defines the entry point for the console application.
+// TestDPC.cpp : Defines the entry point for the console application.
 //
-
-
 
 #include <Windows.h>
 #include <stdio.h>
 
 #include <winioctl.h>
-#include "..\IoTimerTest\Header1.h"
+#include "..\DPCTimer\Header1.h"
 
 int main()
 {
@@ -29,12 +27,13 @@ int main()
 	}
 
 	DWORD dwOutput;
+	DWORD dwMircoSeconds = 1000 * 1000 * 2;
 
-	DeviceIoControl(hDevice, IOCTL_START_TIMER, NULL, 0, NULL, 0, &dwOutput, NULL);
+	DeviceIoControl(hDevice, IOCTL_START_TIMER, &dwMircoSeconds, sizeof(DWORD), NULL, 0, &dwOutput, NULL);
 
-	Sleep(5000);
+	Sleep(10000);
 
-	DeviceIoControl(hDevice, IOCTL_STOP, NULL, 0, NULL, 0, &dwOutput, NULL);
+	DeviceIoControl(hDevice, IOCTL_STOP_TIMER, NULL, 0, NULL, 0, &dwOutput, NULL);
 
 	CloseHandle(hDevice);
 
