@@ -1,0 +1,32 @@
+;
+; Test1.inf
+;
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=
+ClassGuid=
+Provider=
+DriverVer=07/03/2016,10.56.54.676
+CatalogFile=
+
+[DestinationDirs]
+DefaultDestDir = 12
+
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[SourceDisksFiles]
+
+
+[Manufacturer]
+%ManufacturerName%=Standard,NTx86
+
+[Standard.NTx86]
+
+
+[Strings]
+ManufacturerName=""
+ClassName=""
+DiskName="Test1 Source Disk"
