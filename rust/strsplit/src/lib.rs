@@ -1,18 +1,20 @@
-pub struct StrSplit {
-    remainder: &str,
-    delimiter: &str,
+#![warn(missing_debug_implementations, rust_2018_idioms)]
+
+pub struct StrSplit<'a> {
+    remainder: &'a str,
+    delimiter: &'a str,
 }
 
-impl StrSplit {
+impl StrSplit<'_> {
     pub fn new(haystack: &str, delimiter: &str) -> Self {
         Self {
             remainder: haystack,
-            delimiter: delimiter,
+            delimiter,
         }
     }
 }
 
-impl Iterator for StrSplit {
+impl Iterator for StrSplit<'_> {
     type Item = &str;
     fn next(&mut self) -> Option<Self::Item> {
         if let Some(next_delim) = self.remainder.find(self.delimiter) {
