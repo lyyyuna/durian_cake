@@ -1,12 +1,13 @@
 #![warn(missing_debug_implementations, rust_2018_idioms)]
 
+#[derive(Debug)]
 pub struct StrSplit<'a> {
     remainder: &'a str,
     delimiter: &'a str,
 }
 
-impl StrSplit<'_> {
-    pub fn new(haystack: &str, delimiter: &str) -> Self {
+impl<'a> StrSplit<'a> {
+    pub fn new(haystack: &'a str, delimiter: &'a str) -> Self {
         Self {
             remainder: haystack,
             delimiter,
@@ -14,8 +15,8 @@ impl StrSplit<'_> {
     }
 }
 
-impl Iterator for StrSplit<'_> {
-    type Item = &str;
+impl<'a> Iterator for StrSplit<'a> {
+    type Item = &'a str;
     fn next(&mut self) -> Option<Self::Item> {
         if let Some(next_delim) = self.remainder.find(self.delimiter) {
             let until_delim = &self.remainder[..next_delim];
@@ -25,7 +26,8 @@ impl Iterator for StrSplit<'_> {
             None
         } else {
             let rest = self.remainder;
-            self.remainder = &[];
+            self.remainder = "";
+            // &'a str = &'static str ?
             Some(rest)
         }
     }
@@ -35,5 +37,5 @@ impl Iterator for StrSplit<'_> {
 fn it_works() {
     let haystack = "a b c d e f";
     let letters =  StrSplit::new(haystack, " ");
-    assert_eq!(letters, vec!["a", "b", "c", "d", "e"].into_iter());
+    assert!(letters.eq(vec!["a", "b", "c", "d", "e", "f"].into_iter()));
 }
