@@ -18,7 +18,7 @@ impl<'a> StrSplit<'a> {
 impl<'a> Iterator for StrSplit<'a> {
     type Item = &'a str;
     fn next(&mut self) -> Option<Self::Item> {
-        let ref mut remainder = self.remainder?;
+        let remainder = self.remainder.as_mut()?;
         if let Some(next_delim) = remainder.find(self.delimiter) {
             let until_delimiter = &remainder[..next_delim];
             *remainder = &remainder[(next_delim + self.delimiter.len())..];
