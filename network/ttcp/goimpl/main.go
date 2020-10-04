@@ -20,8 +20,8 @@ func init() {
 	flag.StringVar(&ipport, "h", "127.0.0.1:5555", "")
 	flag.Parse()
 
-	number = 1000000
-	length = 4096
+	number = 1000
+	length = 1024
 }
 
 func main() {
@@ -64,7 +64,7 @@ func ttcpServer(ipport string) {
 					log.Fatal("recv length not compatible with session length", recvLen)
 				}
 				binary.Read(c, binary.BigEndian, recvBuf)
-				log.Println(string(recvBuf))
+				log.Println(i)
 				binary.Write(c, binary.BigEndian, &sessionLen)
 			}
 			log.Println("session close")
@@ -101,14 +101,14 @@ func ttcpClientRecv(conn net.Conn, output []byte, length int32) {
 	var count int32
 	var recvLength int32
 
-	binary.Read(conn, binary.BigEndian, &recvLength)
-	if recvLength != length {
-		log.Fatal("length no compatible")
-	}
-
 	for count = 1; count < number; count++ {
+		binary.Read(conn, binary.BigEndian, &recvLength)
+		if recvLength != length {
+			log.Fatal("length no compatible")
+		}
+
 		binary.Write(conn, binary.BigEndian, &length)
 		binary.Write(conn, binary.BigEndian, output)
-		count++
+		log.Println(count)
 	}
 }
