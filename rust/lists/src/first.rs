@@ -1,3 +1,5 @@
+use std::mem;
+
 // List
 #[derive(Debug)]
 struct Node {
@@ -15,5 +17,12 @@ struct List {
 impl List {
     pub fn new() -> Self {
         List { head: None }
+    }
+
+    pub fn push(&mut self, elem: i32) {
+        let new_node = Box::new(Node {
+            elem: elem,
+            next: mem::replace(&mut self.head, None),
+        });
     }
 }
