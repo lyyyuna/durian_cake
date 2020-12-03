@@ -1,3 +1,5 @@
+#![allow(dead_code)]
+
 use std::mem;
 
 // List
@@ -10,7 +12,7 @@ struct Node {
 type Link = Option<Box<Node>>;
 
 #[derive(Debug)]
-struct List {
+pub struct List {
     head: Link
 }
 

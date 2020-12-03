@@ -1,3 +1,5 @@
+#![allow(dead_code)]
+
 // List
 #[derive(Debug)]
 struct Node<T> {
@@ -8,7 +10,7 @@ struct Node<T> {
 type Link<T> = Option<Box<Node<T>>>;
 
 #[derive(Debug)]
-struct List<T> {
+pub struct List<T> {
     head: Link<T>
 }
 
