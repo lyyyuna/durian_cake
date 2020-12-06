@@ -66,15 +66,15 @@ impl Crawler {
             println!("image page link: {}", image_page_link);
             self.download_image(image_page_link)?;
 
-            thread::sleep(Duration::from_millis(1000));
-
-            let selector2 = Selector::parse(".page a").unwrap();
-            let pages = document.select(&selector2);
-            let next_page = pages.last().unwrap();
-            let next_page_link = next_page.value().attr("href").unwrap();
-
-            self.get_page(next_page_link)?;
+            thread::sleep(Duration::from_millis(500));
         }
+
+        let selector2 = Selector::parse(".page a").unwrap();
+        let pages = document.select(&selector2);
+        let next_page = pages.last().unwrap();
+        let next_page_link = next_page.value().attr("href").unwrap();
+
+        self.get_page(next_page_link)?;
         Ok(())
     }
 }
