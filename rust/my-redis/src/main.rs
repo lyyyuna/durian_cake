@@ -1,19 +1,12 @@
-use tokio::sync::mpsc;
+use mini_redis::{client, Result};
 
 #[tokio::main]
-async fn main() {
-    let (mut tx, mut rx) = mpsc::channel(32);
-    let mut tx2 = tx.clone();
+async fn main() -> Result<()> {
+    let mut client = client::connect("127.0.0.1:6379").await?;
+    client.set("hello", "value".into()).await?;
 
-    tokio::spawn(async move {
-        tx.send("sending from first handle").await;
-    });
+    let result = client.get("hello").await?;
 
-    tokio::spawn(async move {
-        tx2.send("sending from second handle").await;
-    });
-
-    while let Some(message) = rx.recv().await {
-        println!("GOT = {}", message);
-    }
+    println!("got value from the server; result={:?}", result);
+    Ok(())
 }
