@@ -1,0 +1,56 @@
+[
+{
+  "directory": "/home/lyy/gitup/durian_cake/ccia",
+  "arguments": ["/usr/bin/ccache", "/usr/bin/gcc", "-c", "-m64", "-std=c++17", "-o", "build/.objs/2.5/linux/x86_64/release/src/listings_2.5.cc.o", "src/listings_2.5.cc"],
+  "file": "src/listings_2.5.cc"
+},
+{
+  "directory": "/home/lyy/gitup/durian_cake/ccia",
+  "arguments": ["/usr/bin/ccache", "/usr/bin/gcc", "-c", "-m64", "-std=c++17", "-o", "build/.objs/2.6/linux/x86_64/release/src/listings_2.6.cc.o", "src/listings_2.6.cc"],
+  "file": "src/listings_2.6.cc"
+},
+{
+  "directory": "/home/lyy/gitup/durian_cake/ccia",
+  "arguments": ["/usr/bin/ccache", "/usr/bin/gcc", "-c", "-m64", "-std=c++17", "-o", "build/.objs/2.7/linux/x86_64/release/src/listings_2.7.cc.o", "src/listings_2.7.cc"],
+  "file": "src/listings_2.7.cc"
+},
+{
+  "directory": "/home/lyy/gitup/durian_cake/ccia",
+  "arguments": ["/usr/bin/ccache", "/usr/bin/gcc", "-c", "-m64", "-std=c++17", "-o", "build/.objs/2.8/linux/x86_64/release/src/listings_2.8.cc.o", "src/listings_2.8.cc"],
+  "file": "src/listings_2.8.cc"
+},
+{
+  "directory": "/home/lyy/gitup/durian_cake/ccia",
+  "arguments": ["/usr/bin/ccache", "/usr/bin/gcc", "-c", "-m64", "-o", "build/.objs/2.1/linux/x86_64/release/src/listings_2.1.cc.o", "src/listings_2.1.cc"],
+  "file": "src/listings_2.1.cc"
+},
+{
+  "directory": "/home/lyy/gitup/durian_cake/ccia",
+  "arguments": ["/usr/bin/ccache", "/usr/bin/gcc", "-c", "-m64", "-std=c++17", "-o", "build/.objs/3.1/linux/x86_64/release/src/listings_3.1.cc.o", "src/listings_3.1.cc"],
+  "file": "src/listings_3.1.cc"
+},
+{
+  "directory": "/home/lyy/gitup/durian_cake/ccia",
+  "arguments": ["/usr/bin/ccache", "/usr/bin/gcc", "-c", "-m64", "-std=c++17", "-o", "build/.objs/3.5/linux/x86_64/release/src/listings_3.5.cc.o", "src/listings_3.5.cc"],
+  "file": "src/listings_3.5.cc"
+},
+{
+  "directory": "/home/lyy/gitup/durian_cake/ccia",
+  "arguments": ["/usr/bin/ccache", "/usr/bin/gcc", "-c", "-m64", "-o", "build/.objs/2.3/linux/x86_64/release/src/listings_2.3.cc.o", "src/listings_2.3.cc"],
+  "file": "src/listings_2.3.cc"
+},
+{
+  "directory": "/home/lyy/gitup/durian_cake/ccia",
+  "arguments": ["/usr/bin/ccache", "/usr/bin/gcc", "-c", "-m64", "-std=c++17", "-o", "build/.objs/4.1/linux/x86_64/release/src/listings_4.1.cc.o", "src/listings_4.1.cc"],
+  "file": "src/listings_4.1.cc"
+},
+{
+  "directory": "/home/lyy/gitup/durian_cake/ccia",
+  "arguments": ["/usr/bin/ccache", "/usr/bin/gcc", "-c", "-m64", "-std=c++17", "-o", "build/.objs/2.4/linux/x86_64/release/src/listings_2.4.cc.o", "src/listings_2.4.cc"],
+  "file": "src/listings_2.4.cc"
+},
+{
+  "directory": "/home/lyy/gitup/durian_cake/ccia",
+  "arguments": ["/usr/bin/ccache", "/usr/bin/gcc", "-c", "-m64", "-std=c++17", "-o", "build/.objs/4.5/linux/x86_64/release/src/listings_4.5.cc.o", "src/listings_4.5.cc"],
+  "file": "src/listings_4.5.cc"
+}]
