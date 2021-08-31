@@ -2,14 +2,21 @@ package main
 
 import (
 	"baohttp/bao"
-	"fmt"
 	"net/http"
 )
 
 func main() {
 	r := bao.NewEngine()
-	r.GET("/", func(rw http.ResponseWriter, r *http.Request) {
-		fmt.Fprintf(rw, "url.path = %v \n", r.URL.Path)
+
+	r.GET("/", func(c *bao.Context) {
+		c.HTML(http.StatusOK, "hello")
+	})
+
+	r.GET("/hello", func(c *bao.Context) {
+		c.JSON(http.StatusOK, bao.H{
+			"1": "a",
+			"2": "b",
+		})
 	})
 
 	r.Run(":9999")
