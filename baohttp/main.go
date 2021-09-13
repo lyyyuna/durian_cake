@@ -11,7 +11,7 @@ import (
 func onlyForV2() bao.HandlerFunc {
 	return func(c *bao.Context) {
 		t := time.Now()
-		log.Println("one middle ware: ", t)
+		log.Printf("one middle ware: %v", t)
 	}
 }
 
