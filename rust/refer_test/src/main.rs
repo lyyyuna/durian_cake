@@ -16,5 +16,4 @@ fn main() -> io::Result<()> {
 
         println!("receive: {}", str::from_utf8(&buffer).expect("could not convert buffer as string."))
     }
-    Ok(())
 }

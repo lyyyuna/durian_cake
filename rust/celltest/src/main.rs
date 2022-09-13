@@ -16,5 +16,4 @@ fn main() {
     let data = Point{x:0, y:1};
     let p = data;
     //data = 10;
-    let c = data;
-  }
+}
